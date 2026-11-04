@@ -1,0 +1,1561 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consulting 5.0 | Functional Area #03: Delivery, Resource & Capacity Management</title>
+  <!-- Tailwind CSS Engine -->
+  <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <style>
+    /* Custom Styling enhancements */
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+    
+    * {
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background-color: #F8FAFC;
+      color: #0F172A;
+    }
+
+    .font-mono-code {
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* Custom scrollbar for sidebar & content */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+    .sidebar::-webkit-scrollbar-thumb {
+      background: #334155;
+    }
+
+    /* Custom range slider thumb styling */
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 22px;
+      width: 22px;
+      border-radius: 50%;
+      background: #2563EB;
+      cursor: pointer;
+      box-shadow: 0 0 0 4px rgba(37, 99, 235, 0.25);
+      transition: all 0.15s ease-in-out;
+    }
+    input[type=range]::-webkit-slider-thumb:hover {
+      transform: scale(1.15);
+      background: #1D4ED8;
+      box-shadow: 0 0 0 6px rgba(37, 99, 235, 0.35);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex bg-slate-50 text-slate-900 antialiased selection:bg-blue-100 selection:text-blue-900">
+
+  <!-- ==================== SIDE-RAIL NAVIGATION (260px) ==================== -->
+  <aside class="sidebar w-64 bg-slate-900 text-slate-100 fixed inset-y-0 left-0 z-50 flex flex-col justify-between border-r border-slate-800 shadow-2xl">
+    <div>
+      <!-- Brand & Header -->
+      <div class="p-6 border-b border-slate-800/80">
+        <div class="flex items-center gap-2.5 mb-2">
+          <div class="h-8 w-8 rounded-lg bg-blue-600 flex items-center justify-center text-white font-black text-sm tracking-tighter shadow-md shadow-blue-500/20">
+            C5.0
+          </div>
+          <div>
+            <span class="text-xs font-mono uppercase tracking-widest text-blue-400 font-bold block leading-none">Operating Model</span>
+            <span class="text-sm font-bold text-white tracking-tight">Consulting 5.0</span>
+          </div>
+        </div>
+        <p class="text-[11px] text-slate-400 font-medium leading-tight mt-1">
+          Functional Area #03: Delivery, Resource & Capacity Management
+        </p>
+      </div>
+
+      <!-- Navigation Views & Links -->
+      <div class="px-4 pt-3 pb-2">
+        <span class="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold block mb-2 px-1">Navigation Views</span>
+        <div class="grid grid-cols-2 gap-1.5 p-1 bg-slate-950/80 rounded-xl border border-slate-800">
+          <button id="tab-btn-blueprint" onclick="switchMainView('blueprint')" class="view-tab-btn flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-xs font-bold transition-all bg-blue-600 text-white shadow-sm">
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+            Blueprint
+          </button>
+          <button id="tab-btn-inputs" onclick="switchMainView('inputs')" class="view-tab-btn flex items-center justify-center gap-1.5 py-1.5 px-2 rounded-lg text-xs font-semibold text-slate-400 hover:text-white hover:bg-slate-800/80 transition-all">
+            <svg class="w-3.5 h-3.5 text-emerald-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+            Inputs
+          </button>
+        </div>
+      </div>
+
+      <!-- Blueprint Section Links -->
+      <div id="blueprint-nav-group">
+        <div class="px-5 pt-2 pb-1">
+          <span class="text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold">Blueprint Sections</span>
+        </div>
+        <nav class="px-4 py-1 space-y-1" id="nav-menu">
+          <a href="#philosophy" class="nav-item flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition-all group">
+            <span class="font-mono text-[10px] text-slate-500 group-hover:text-blue-400 transition-colors">01</span>
+            <span>Operating Philosophy</span>
+          </a>
+          <a href="#phase1-topology" class="nav-item flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition-all group">
+            <span class="font-mono text-[10px] text-slate-500 group-hover:text-blue-400 transition-colors">02</span>
+            <span>Phase 1 Pod Topology</span>
+          </a>
+          <a href="#phase2-clusters" class="nav-item flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition-all group">
+            <span class="font-mono text-[10px] text-slate-500 group-hover:text-blue-400 transition-colors">03</span>
+            <span>Phase 2 Scaled Clusters</span>
+          </a>
+          <a href="#capacity-simulator" class="nav-item flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition-all group">
+            <span class="font-mono text-[10px] text-slate-500 group-hover:text-blue-400 transition-colors">04</span>
+            <span class="flex-1 flex items-center justify-between">
+              <span>Capacity Simulator</span>
+              <span class="inline-block w-2 h-2 rounded-full bg-blue-400 animate-pulse"></span>
+            </span>
+          </a>
+          <a href="#sprint-allocation" class="nav-item flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition-all group">
+            <span class="font-mono text-[10px] text-slate-500 group-hover:text-blue-400 transition-colors">05</span>
+            <span>80/10/10 Capacity Rule</span>
+          </a>
+          <a href="#quality-ip" class="nav-item flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition-all group">
+            <span class="font-mono text-[10px] text-slate-500 group-hover:text-blue-400 transition-colors">06</span>
+            <span>DoD Gates & IP Lab</span>
+          </a>
+        </nav>
+      </div>
+
+      <!-- Planning Inputs Quick Links (Visible when Inputs is selected) -->
+      <div id="inputs-nav-group" class="hidden">
+        <div class="px-5 pt-2 pb-1">
+          <span class="text-[10px] font-mono uppercase tracking-wider text-emerald-400 font-bold">Planning Config</span>
+        </div>
+        <div class="px-4 py-2 space-y-2 text-xs text-slate-400">
+          <div class="p-3 bg-slate-950/60 rounded-xl border border-slate-800 space-y-1">
+            <span class="text-[10px] font-mono text-emerald-400 uppercase font-bold block">Active Parameters</span>
+            <p class="text-[11px] text-slate-300 leading-snug">
+              Configured targets dynamically feed into simulator calculations and financial models.
+            </p>
+          </div>
+          <button onclick="resetDefaultInputs()" class="w-full text-center py-2 px-3 rounded-lg border border-slate-700 hover:border-slate-500 text-[11px] font-mono text-slate-300 hover:text-white transition">
+            Reset to Defaults
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Sidebar Bottom Status Widget (Live Linked to Inputs) -->
+    <div class="p-4 border-t border-slate-800/80 bg-slate-950/60">
+      <div class="flex items-center justify-between text-[11px] mb-1.5 font-mono">
+        <span class="text-slate-400">Baseline Scale:</span>
+        <span id="rail-stat-scale" class="text-blue-400 font-bold">20 FTEs</span>
+      </div>
+      <div class="flex items-center justify-between text-[11px] mb-1.5 font-mono">
+        <span class="text-slate-400">Target Margin:</span>
+        <span id="rail-stat-margin" class="text-emerald-400 font-bold">&ge; 55%</span>
+      </div>
+      <div class="flex items-center justify-between text-[11px] mb-1.5 font-mono">
+        <span class="text-slate-400">Target Util:</span>
+        <span id="rail-stat-util" class="text-purple-400 font-bold">&ge; 75%</span>
+      </div>
+      <div class="flex items-center justify-between text-[11px] pt-1.5 border-t border-slate-800/60 font-mono">
+        <span class="text-slate-400">Sprint Rate:</span>
+        <span id="rail-stat-rate" class="text-amber-400 font-bold">$75k / sprint</span>
+      </div>
+    </div>
+  </aside>
+
+  <!-- ==================== MAIN CONTENT STAGE ==================== -->
+  <main class="ml-64 flex-1 p-8 lg:p-12 max-w-7xl mx-auto space-y-16">
+
+    <!-- Top Floating Header Status Bar -->
+    <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200">
+      <div>
+        <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-blue-100 text-blue-700 text-xs font-semibold mb-2">
+          <span class="w-1.5 h-1.5 rounded-full bg-blue-600"></span>
+          FUNCTIONAL BLUEPRINT #03
+        </div>
+        <h1 class="text-3xl lg:text-4xl font-extrabold tracking-tight text-slate-900">
+          Delivery, Resource & Capacity Management
+        </h1>
+        <p class="text-sm text-slate-500 mt-1 max-w-2xl">
+          Outcome-driven operating system designed to replace hourly billing with dedicated Modern Data Stack Pods and predictable velocity.
+        </p>
+      </div>
+
+      <!-- Quick Action Buttons & View Mode Toggle -->
+      <div class="flex items-center gap-3">
+        <button onclick="switchMainView('inputs')" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold transition shadow-sm shadow-emerald-500/20">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"/></svg>
+          Planning Inputs
+        </button>
+        <a href="#capacity-simulator" onclick="switchMainView('blueprint')" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition shadow-sm shadow-blue-500/20">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          Simulator
+        </a>
+      </div>
+    </header>
+
+    
+    <!-- ==================== VIEW 1: ARCHITECTURE BLUEPRINT ==================== -->
+    <div id="view-blueprint" class="space-y-16">
+<!-- ==================== SECTION 1: OPERATING PHILOSOPHY ==================== -->
+    <section id="philosophy" class="scroll-mt-8 space-y-6">
+      <div class="flex items-center gap-2">
+        <span class="px-2.5 py-0.5 rounded text-[11px] font-bold font-mono tracking-wider bg-slate-200 text-slate-700 uppercase">Section 01</span>
+        <span class="text-xs font-semibold text-slate-400">Operating Approach</span>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">
+          From Hourly Billing to Pod Velocity & Outcome-Based Delivery
+        </h2>
+        <p class="text-slate-600 text-sm mt-1 max-w-3xl">
+          Clients pay for completed outcomes — not engineering hours. Capacity is tracked as committed vs. uncommitted pod sprints across a 6-week rolling horizon.
+        </p>
+      </div>
+
+      <!-- Two-Column Interactive Comparison -->
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Legacy Column -->
+        <div class="bg-white rounded-2xl border border-red-200/80 p-6 shadow-sm hover:shadow-md transition-shadow relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-red-100/50 rounded-bl-full -z-0 pointer-events-none group-hover:scale-110 transition-transform"></div>
+          <div class="flex items-center justify-between mb-4 relative z-10">
+            <span class="px-2.5 py-1 rounded-md text-[11px] font-mono font-bold bg-red-100 text-red-700 border border-red-200">
+              OLD APPROACH
+            </span>
+            <span class="text-xs text-red-500 font-semibold">T&M Model</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Legacy Hourly Billing (T&M)</h3>
+          <p class="text-xs text-slate-500 mb-5">Rewards time spent instead of results, and leaves the firm exposed to falling hourly rates.</p>
+
+          <ul class="space-y-3.5 text-xs text-slate-700">
+            <li class="flex items-start gap-2.5">
+              <span class="w-4 h-4 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold text-[10px] mt-0.5 flex-shrink-0">✕</span>
+              <div>
+                <strong class="font-semibold text-slate-900 block">Unit of Measure:</strong>
+                The billable hour, with individual billability targets of about 80%.
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="w-4 h-4 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold text-[10px] mt-0.5 flex-shrink-0">✕</span>
+              <div>
+                <strong class="font-semibold text-slate-900 block">Utilization Pressure:</strong>
+                Revenue depends on keeping every engineer billable. Any gap between projects is unrecovered cost, which pushes the firm to staff by availability instead of fit.
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="w-4 h-4 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold text-[10px] mt-0.5 flex-shrink-0">✕</span>
+              <div>
+                <strong class="font-semibold text-slate-900 block">The Efficiency Penalty:</strong>
+                If the engineering squad builds automated reusable code and finishes faster, billable revenue plummets.
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="w-4 h-4 rounded-full bg-red-100 text-red-600 flex items-center justify-center font-bold text-[10px] mt-0.5 flex-shrink-0">✕</span>
+              <div>
+                <strong class="font-semibold text-slate-900 block">Client Friction:</strong>
+                Clients focus on the hourly rate, not the result. Offshore firms and AI-driven expectations of lower rates keep pushing that rate down.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Outcome Column -->
+        <div class="bg-white rounded-2xl border-2 border-blue-500 p-6 shadow-md relative overflow-hidden group">
+          <div class="absolute top-0 right-0 w-24 h-24 bg-blue-100/60 rounded-bl-full -z-0 pointer-events-none group-hover:scale-110 transition-transform"></div>
+          <div class="flex items-center justify-between mb-4 relative z-10">
+            <span class="px-2.5 py-1 rounded-md text-[11px] font-mono font-bold bg-blue-100 text-blue-700 border border-blue-200">
+              C5.0 OPERATING MODEL
+            </span>
+            <span class="text-xs text-blue-600 font-semibold font-mono">DoD Velocity</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900 mb-2">Outcome-Based Pod Velocity</h3>
+          <p class="text-xs text-slate-500 mb-5">Aligns client business success directly with consultant velocity and margin expansion.</p>
+
+          <ul class="space-y-3.5 text-xs text-slate-700">
+            <li class="flex items-start gap-2.5">
+              <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-[10px] mt-0.5 flex-shrink-0">✓</span>
+              <div>
+                <strong class="font-semibold text-slate-900 block">Unit of Measure:</strong>
+                Pod Sprint Velocity (bi-weekly sprint units) & contractual Definition of Done (DoD) milestones.
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-[10px] mt-0.5 flex-shrink-0">✓</span>
+              <div>
+                <strong class="font-semibold text-slate-900 block">100% Dedicated Delivery Pods:</strong>
+                Zero fractional assignments within the core squad; pods execute against a single clear client backlog.
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-[10px] mt-0.5 flex-shrink-0">✓</span>
+              <div>
+                <strong class="font-semibold text-slate-900 block">Growing Margins (&ge;55%):</strong>
+                Using reusable IP and automated templates accelerates delivery, expanding gross margin without client friction.
+              </div>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <span class="w-4 h-4 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center font-bold text-[10px] mt-0.5 flex-shrink-0">✓</span>
+              <div>
+                <strong class="font-semibold text-slate-900 block">Client Value Alignment:</strong>
+                Clients buy guaranteed operational lakehouses, streaming pipelines, and transformation models with zero timesheet arguments.
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Executive Callout Banner -->
+      <div class="bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 rounded-xl p-4 flex items-center gap-3.5 shadow-sm">
+        <div class="w-8 h-8 rounded-lg bg-blue-600 text-white flex items-center justify-center text-sm font-bold flex-shrink-0 shadow-sm">
+          💡
+        </div>
+        <p class="text-xs text-slate-700 leading-relaxed">
+          <strong class="text-blue-900 font-semibold">Core Operating Mandate:</strong> Clients buy predictable cloud data outcomes and sprint velocity—not engineering hours. Internal capacity is governed by tracking <span class="font-mono font-semibold text-blue-700">Committed vs. Uncommitted Pod Sprints</span> across a 6-week rolling horizon.
+        </p>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 2: PHASE 1 POD TOPOLOGY ==================== -->
+    <section id="phase1-topology" class="scroll-mt-8 space-y-6">
+      <div class="flex items-center gap-2">
+        <span class="px-2.5 py-0.5 rounded text-[11px] font-bold font-mono tracking-wider bg-slate-200 text-slate-700 uppercase">Section 02</span>
+        <span class="text-xs font-semibold text-slate-400">Baseline Architecture (20–35 FTEs)</span>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">
+          Standard 5-FTE Pod & Governance Overlay
+        </h2>
+        <p class="text-slate-600 text-sm mt-1 max-w-3xl">
+          Combining 100% dedicated squad execution with shared senior architecture and delivery governance to eliminate siloing between presales and execution.
+        </p>
+      </div>
+
+      <!-- Topology Diagram & Architecture Grid -->
+      <div class="flex flex-col">
+
+        <!-- Top: Governance Overlay -->
+        <div class="bg-slate-900 rounded-2xl border-2 border-violet-500 p-6 shadow-lg flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-4">
+              <span class="px-2.5 py-1 rounded bg-violet-500 text-white text-xs font-bold font-mono">
+                GOVERNANCE OVERLAY
+              </span>
+              <span class="text-xs font-mono text-violet-200 font-semibold">+0.58 FTE / Pod</span>
+            </div>
+            <h3 class="text-base font-bold text-white mb-1">Governance Overlay</h3>
+            <p class="text-xs text-slate-300 mb-5">Senior oversight that sits above the pods and is shared across them to keep architecture and delivery standards consistent.</p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- Principal Architect -->
+              <div class="p-3.5 rounded-xl bg-slate-800 border border-slate-700 hover:border-violet-400 transition-colors">
+                <div class="flex items-center justify-between mb-1.5">
+                  <span class="text-xs font-bold text-white">Principal Data Architect</span>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-violet-500/20 text-violet-200 border border-violet-400/50">
+                    0.25 FTE / Pod
+                  </span>
+                </div>
+                <p class="text-[11px] text-slate-300 leading-relaxed">
+                  Presales SOW scoping, cross-pod architecture reviews, Definition of Done QA gates, and partner alignment. One architect covers up to 3 pods (3 &times; 0.25 = 75% of their time). The remaining 25% goes to technical shadowing and IP development, per the 80/10/10 Senior Capacity Allocation model.
+                </p>
+              </div>
+
+              <!-- Data Delivery Manager -->
+              <div class="p-3.5 rounded-xl bg-slate-800 border border-slate-700 hover:border-violet-400 transition-colors">
+                <div class="flex items-center justify-between mb-1.5">
+                  <span class="text-xs font-bold text-white">Data Delivery Manager</span>
+                  <span class="px-2 py-0.5 rounded text-[10px] font-mono font-bold bg-violet-500/20 text-violet-200 border border-violet-400/50">
+                    0.33 FTE / Pod
+                  </span>
+                </div>
+                <p class="text-[11px] text-slate-300 leading-relaxed">
+                  Pod sprint cadence governance, 6-week rolling pipeline capacity scheduling, scope change controls, and reassigning unassigned people. Max load: 3 active pods.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Total Overlay Block Metric -->
+          <div class="mt-6 pt-4 border-t border-slate-700 flex items-center justify-between bg-slate-800 p-3.5 rounded-xl border border-slate-700">
+            <div>
+              <span class="text-[10px] font-mono text-violet-200 uppercase font-bold block">Total Staffing Unit</span>
+              <span class="text-xs text-slate-300 font-medium">Core Pod + Governance Overlay</span>
+            </div>
+            <div class="text-right">
+              <span class="text-lg font-extrabold font-mono text-violet-300">5.58 FTEs</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Connector from overlay down to pod -->
+        <div class="flex flex-col items-center py-1">
+          <div class="w-0.5 h-6 bg-slate-600"></div>
+          <span class="text-[10px] font-mono text-slate-700 font-bold uppercase tracking-wider">oversees</span>
+          <div class="w-0.5 h-6 bg-slate-600"></div>
+        </div>
+
+        <!-- Bottom: Core Execution Pod Structure -->
+        <div class="bg-blue-50 rounded-2xl border-2 border-blue-500 p-6 shadow-lg">
+          <div class="flex items-center justify-between mb-4">
+            <span class="px-2.5 py-1 rounded bg-blue-600 text-white text-xs font-bold font-mono">
+              STANDARD POD TOPOLOGY
+            </span>
+            <span class="text-xs font-mono text-slate-500 font-semibold">5.0 Dedicated FTEs</span>
+          </div>
+          <h3 class="text-base font-bold text-slate-900 mb-1">Modern Data Stack (MDS) Execution Pod</h3>
+          <p class="text-xs text-slate-500 mb-5">Autonomous cross-functional delivery pod executing bi-weekly client outcomes.</p>
+
+          <div class="space-y-3">
+            <!-- Lead Data Engineer -->
+            <div class="flex items-start justify-between p-3 rounded-xl border border-slate-200 hover:border-blue-400 hover:bg-blue-50/30 transition-all">
+              <div class="space-y-0.5">
+                <div class="flex items-center gap-2">
+                  <span class="font-bold text-xs text-slate-900">Lead Data Engineer (Pod Lead)</span>
+                  <span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-semibold bg-blue-100 text-blue-700">Client Tech Lead</span>
+                </div>
+                <p class="text-[11px] text-slate-500">Squad technical direction, PR code reviews, client standups, and high-risk pipeline components.</p>
+              </div>
+              <span class="font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded ml-3">1.0 FTE</span>
+            </div>
+
+            <!-- Senior Data Engineers -->
+            <div class="flex items-start justify-between p-3 rounded-xl border border-slate-200 hover:border-blue-400 hover:bg-blue-50/30 transition-all">
+              <div class="space-y-0.5">
+                <div class="flex items-center gap-2">
+                  <span class="font-bold text-xs text-slate-900">Senior Data Engineers (2 FTEs)</span>
+                  <span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-semibold bg-slate-100 text-slate-700">Pipelines & Scale</span>
+                </div>
+                <p class="text-[11px] text-slate-500">Raw ingestion pipelines, REST API connectors, Spark/Databricks transformations, and lakehouse storage.</p>
+              </div>
+              <span class="font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded ml-3">2.0 FTE</span>
+            </div>
+
+            <!-- Analytics Engineers -->
+            <div class="flex items-start justify-between p-3 rounded-xl border border-slate-200 hover:border-blue-400 hover:bg-blue-50/30 transition-all">
+              <div class="space-y-0.5">
+                <div class="flex items-center gap-2">
+                  <span class="font-bold text-xs text-slate-900">Analytics Engineers (1.5 FTEs)</span>
+                  <span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-semibold bg-emerald-100 text-emerald-700">Models & Semantic</span>
+                </div>
+                <p class="text-[11px] text-slate-500">SQL data transformation modeling, dimensional schemas, automated data testing, and semantic layer builds.</p>
+              </div>
+              <span class="font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded ml-3">1.5 FTE</span>
+            </div>
+
+            <!-- DataOps & FinOps -->
+            <div class="flex items-start justify-between p-3 rounded-xl border border-slate-200 hover:border-blue-400 hover:bg-blue-50/30 transition-all">
+              <div class="space-y-0.5">
+                <div class="flex items-center gap-2">
+                  <span class="font-bold text-xs text-slate-900">DataOps & FinOps Specialist</span>
+                  <span class="px-1.5 py-0.2 rounded text-[10px] font-mono font-semibold bg-amber-100 text-amber-700">IaC & Cost QA</span>
+                </div>
+                <p class="text-[11px] text-slate-500">Terraform IaC, CI/CD runners, automated alert gates, and cloud compute cost monitoring.</p>
+              </div>
+              <span class="font-mono text-xs font-bold text-blue-600 bg-blue-50 px-2 py-1 rounded ml-3">0.5 FTE</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 3: PHASE 2 SCALED CLUSTERS ==================== -->
+    <section id="phase2-clusters" class="scroll-mt-8 space-y-6">
+      <div class="flex items-center gap-2">
+        <span class="px-2.5 py-0.5 rounded text-[11px] font-bold font-mono tracking-wider bg-slate-200 text-slate-700 uppercase">Section 03</span>
+        <span class="text-xs font-semibold text-slate-400">Scale Architecture (35–60 FTEs)</span>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">
+          Transitioning to Dedicated Clusters & Resource Operations Hub
+        </h2>
+        <p class="text-slate-600 text-sm mt-1 max-w-3xl">
+          Preventing communication bottlenecks and governance dilution as the practice scales from 3 to 10+ active delivery pods.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        
+        <!-- Cluster Architecture -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded bg-purple-100 text-purple-700 text-xs font-bold font-mono">
+              SCALING PILLAR 01
+            </span>
+            <span class="text-xs font-mono text-slate-500 font-semibold">Distributed Delivery</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900">Dedicated 3-Pod Technical Clusters</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Beyond 35 FTEs, a shared governance overlay become too much for one person to manage. C50 groups pods into autonomous 3-pod clusters led by dedicated senior officers:
+          </p>
+
+          <ul class="space-y-3 text-xs text-slate-700">
+            <li class="flex items-start gap-2">
+              <span class="text-purple-600 font-bold">•</span>
+              <div>
+                <strong class="font-semibold text-slate-900">Cluster Lead Architect (1.0 FTE Dedicated):</strong>
+                Assigned exclusively across 3 pods for high-risk system design, architectural governance, and escalation management.
+              </div>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-purple-600 font-bold">•</span>
+              <div>
+                <strong class="font-semibold text-slate-900">Cluster Delivery Lead (1.0 FTE Dedicated):</strong>
+                Governs sprint velocity, milestone gate releases, and client account health across the 3 pods.
+              </div>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-purple-600 font-bold">•</span>
+              <div>
+                <strong class="font-semibold text-slate-900">Cluster Risk Pooling:</strong>
+                If a pod finishes early, capacity is absorbed by other pods in the same cluster before going unassigned.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Resource Ops Hub -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+          <div class="flex items-center justify-between">
+            <span class="px-2.5 py-1 rounded bg-blue-100 text-blue-700 text-xs font-bold font-mono">
+              SCALING PILLAR 02
+            </span>
+            <span class="text-xs font-mono text-slate-500 font-semibold">Central Staffing</span>
+          </div>
+          <h3 class="text-lg font-bold text-slate-900">Central Resource Operations Hub</h3>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Separating individual project delivery management from company-wide capacity planning, skill-based assignment, and managing unassigned time:
+          </p>
+
+          <ul class="space-y-3 text-xs text-slate-700">
+            <li class="flex items-start gap-2">
+              <span class="text-blue-600 font-bold">•</span>
+              <div>
+                <strong class="font-semibold text-slate-900">Resource Operations Lead (Hire at 35 FTEs):</strong>
+                Dedicated owner of matching people to projects, keeping people assigned, and 6-week forward capacity booking.
+              </div>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-600 font-bold">•</span>
+              <div>
+                <strong class="font-semibold text-slate-900">Automated CRM & PSA Pipeline Hold:</strong>
+                Deals reaching 70%+ win probability in the CRM platform automatically trigger provisional pod allocations in the resource scheduling system.
+              </div>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-600 font-bold">•</span>
+              <div>
+                <strong class="font-semibold text-slate-900">Granular Skill Inventory Matching:</strong>
+                Staffing matches cloud competency tags (Databricks, Spark, Streaming, SQL, Python) rather than interchangeable headcount.
+              </div>
+            </li>
+          </ul>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 4: INTERACTIVE CAPACITY SIMULATOR ==================== -->
+    <section id="capacity-simulator" class="scroll-mt-8 space-y-6">
+      <div class="flex items-center gap-2">
+        <span class="px-2.5 py-0.5 rounded text-[11px] font-bold font-mono tracking-wider bg-blue-100 text-blue-700 uppercase">Section 04</span>
+        <span class="text-xs font-semibold text-blue-600">Interactive Planning Widget</span>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">
+          Pod Capacity & Commitment Simulator
+        </h2>
+        <p class="text-slate-600 text-sm mt-1 max-w-3xl">
+          Adjust active concurrent client pods to model governance overlay loads, total required headcount, and quarterly sprint delivery throughput in real time.
+        </p>
+      </div>
+
+      <!-- Main Simulator Card -->
+      <div class="bg-white rounded-2xl border-2 border-blue-600 p-6 lg:p-8 shadow-xl shadow-blue-500/5 space-y-8">
+        
+        <!-- Controls Bar -->
+        <div class="space-y-4">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+            <div>
+              <label for="pod-slider" class="text-sm font-bold text-slate-900">
+                Active Concurrent Client Pods:
+              </label>
+              <p class="text-xs text-slate-500">Simulate staffing demand and governance overhead</p>
+            </div>
+            <div class="inline-flex items-center gap-2 bg-blue-50 border border-blue-200 px-4 py-2 rounded-xl">
+              <span class="text-xs font-mono font-bold text-slate-500 uppercase">Selected:</span>
+              <span id="pod-count-display" class="font-mono text-xl font-black text-blue-700">3 Active Pods</span>
+            </div>
+          </div>
+
+          <!-- Slider -->
+          <div class="space-y-2">
+            <input 
+              type="range" 
+              id="pod-slider" 
+              min="1" 
+              max="10" 
+              value="3" 
+              step="1" 
+              class="w-full h-3 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+            >
+            <div class="flex justify-between text-[11px] font-mono text-slate-400 px-1">
+              <span>1 Pod (Phase 1 Start)</span>
+              <span class="text-blue-600 font-bold">3 Pods (20 FTE Baseline)</span>
+              <span>6 Pods (Phase 2 Mid)</span>
+              <span>10 Pods (60 FTE Scale)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4-Column Live Metrics Display -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          
+          <!-- Stat 1: Total Headcount -->
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center hover:border-blue-300 transition-colors">
+            <span class="text-[11px] font-mono text-slate-500 uppercase font-semibold block">Total Pod Headcount</span>
+            <span id="stat-total-fte" class="font-mono text-2xl font-black text-blue-700 my-1 block">16.7 FTEs</span>
+            <span class="text-[11px] text-slate-400 font-medium">Core Pods + Governance Overlay</span>
+          </div>
+
+          <!-- Stat 2: Principal Architect Load -->
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center hover:border-blue-300 transition-colors">
+            <span class="text-[11px] font-mono text-slate-500 uppercase font-semibold block">Principal Architect Load</span>
+            <span id="stat-architect-load" class="font-mono text-2xl font-black text-slate-900 my-1 block">75% Load</span>
+            <span id="stat-architect-status" class="inline-block text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">
+              1 Architect Required
+            </span>
+            <span class="block text-[10px] text-slate-400 mt-1.5">Remaining time: shadowing &amp; IP development</span>
+          </div>
+
+          <!-- Stat 3: Delivery Manager Load -->
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center hover:border-blue-300 transition-colors">
+            <span class="text-[11px] font-mono text-slate-500 uppercase font-semibold block">Delivery Manager Load</span>
+            <span id="stat-dm-load" class="font-mono text-2xl font-black text-slate-900 my-1 block">100% Load</span>
+            <span id="stat-dm-status" class="inline-block text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">
+              1 Manager Required
+            </span>
+          </div>
+
+          <!-- Stat 4: Sprint Velocity -->
+          <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center hover:border-blue-300 transition-colors">
+            <span class="text-[11px] font-mono text-slate-500 uppercase font-semibold block">Quarterly Pod Velocity</span>
+            <span id="stat-velocity" class="font-mono text-2xl font-black text-indigo-700 my-1 block">18 Sprint Units</span>
+            <span class="text-[11px] text-slate-400 font-medium">6 Sprints / Qtr / Pod</span>
+          </div>
+        </div>
+
+        <!-- Multi-Pod Structure Diagram (updates with the slider) -->
+        <div class="space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <h4 class="text-sm font-bold text-slate-900">Team Structure at This Scale</h4>
+            <p class="text-[11px] text-slate-500">Each pod = 5 engineers. Clusters group up to 3 pods. The governance overlay sits on top.</p>
+          </div>
+          <div id="structure-diagram" class="rounded-xl border border-slate-200 bg-slate-50 p-4 space-y-3 overflow-x-auto"></div>
+          <div class="flex flex-wrap gap-4 text-[11px] text-slate-500">
+            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-blue-500"></span>Engineer</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-violet-500"></span>Principal Architect</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-500"></span>Delivery Manager</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-500"></span>Resource Operations Lead</span>
+          </div>
+        </div>
+
+        <!-- Dynamic Capacity Insight Callout -->
+        <div id="simulator-insight" class="p-4 rounded-xl bg-blue-50/70 border border-blue-200 text-xs text-slate-700 flex items-start gap-3">
+          <span class="text-blue-600 font-bold text-sm">⚡</span>
+          <div class="space-y-1">
+            <strong class="text-blue-900 font-semibold" id="insight-title">Baseline 20-Person Model Balanced:</strong>
+            <p id="insight-desc" class="text-slate-600">
+              At 3 active pods, 15 dedicated engineers are engaged in client sprints. Each Principal Architect spends about 75% of their time on pod oversight. The other 25% goes to technical shadowing and IP development (see the Senior Capacity Allocation model). Delivery management is at optimal capacity.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 5: 80/10/10 CAPACITY ENGINE ==================== -->
+    <section id="sprint-allocation" class="scroll-mt-8 space-y-6">
+      <div class="flex items-center gap-2">
+        <span class="px-2.5 py-0.5 rounded text-[11px] font-bold font-mono tracking-wider bg-slate-200 text-slate-700 uppercase">Section 05</span>
+        <span class="text-xs font-semibold text-slate-400">Work Distribution</span>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">
+          The 80/10/10 Senior Capacity Allocation Model
+        </h2>
+        <p class="text-slate-600 text-sm mt-1 max-w-3xl">
+          Structuring 2-week sprint time to protect execution quality, support junior-senior mentoring, and build reusable IP.
+        </p>
+      </div>
+
+      <!-- Visual Capacity Bar -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-4">
+        <div class="flex items-center justify-between text-xs">
+          <span class="font-bold text-slate-900">Bi-Weekly Sprint Bandwidth Breakdown (100% Total Available)</span>
+          <span class="font-mono text-slate-500">80 hours per engineer / 2-week cycle</span>
+        </div>
+
+        <div class="w-full h-12 bg-slate-100 rounded-xl overflow-hidden flex font-mono text-xs font-bold text-white shadow-inner">
+          <div class="bg-blue-600 hover:bg-blue-700 transition-colors flex items-center justify-center tracking-wide" style="width: 80%;">
+            80% Client Outcomes (DoD Milestones)
+          </div>
+          <div class="bg-emerald-600 hover:bg-emerald-700 transition-colors flex items-center justify-center tracking-wide" style="width: 10%;">
+            10% Shadowing
+          </div>
+          <div class="bg-purple-600 hover:bg-purple-700 transition-colors flex items-center justify-center tracking-wide" style="width: 10%;">
+            10% IP Lab
+          </div>
+        </div>
+
+        <div class="flex items-center justify-between text-[11px] text-slate-500 pt-1">
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-blue-600 inline-block"></span> 64 Hours: Client Backlog</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-emerald-600 inline-block"></span> 8 Hours: Stack Upskilling</span>
+          <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded bg-purple-600 inline-block"></span> 8 Hours: Reusable IP</span>
+        </div>
+      </div>
+
+      <!-- 3 Detail Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-blue-50 text-blue-700 flex items-center justify-center font-mono font-black text-base border border-blue-200">
+            80%
+          </div>
+          <h4 class="text-sm font-bold text-slate-900">Client Outcome Execution</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Dedicated execution of sprint backlog tasks directly mapped to contractual Definition of Done criteria. Engineers are shielded from non-pod meetings and context switching.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-emerald-50 text-emerald-700 flex items-center justify-center font-mono font-black text-base border border-emerald-200">
+            10%
+          </div>
+          <h4 class="text-sm font-bold text-slate-900">Technical Shadowing & Upskilling</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            0.25 FTE mid-level engineers shadow senior leads when expanding into advanced capabilities (e.g., Lakehouse &rarr; Real-Time Streaming/Spark) without billing the client, preventing capability silos.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-2">
+          <div class="w-10 h-10 rounded-xl bg-purple-50 text-purple-700 flex items-center justify-center font-mono font-black text-base border border-purple-200">
+            10%
+          </div>
+          <h4 class="text-sm font-bold text-slate-900">IP Development & Practice Lab</h4>
+          <p class="text-xs text-slate-600 leading-relaxed">
+            Reserved capacity to capture reusable transformation macros, test suites, and Infrastructure-as-Code (IaC) templates, building a library that speeds up future engagements.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ==================== SECTION 6: QUALITY GATES & IP LAB ==================== -->
+    <section id="quality-ip" class="scroll-mt-8 space-y-6">
+      <div class="flex items-center gap-2">
+        <span class="px-2.5 py-0.5 rounded text-[11px] font-bold font-mono tracking-wider bg-slate-200 text-slate-700 uppercase">Section 06</span>
+        <span class="text-xs font-semibold text-slate-400">Quality &amp; Growing Reusable Assets</span>
+      </div>
+      <div>
+        <h2 class="text-2xl font-bold text-slate-900 tracking-tight">
+          Binary Definition of Done (DoD) & Turning Idle Time into Reusable Assets
+        </h2>
+        <p class="text-slate-600 text-sm mt-1 max-w-3xl">
+          Automating release verification while directing unassigned time into building reusable assets.
+        </p>
+      </div>
+
+      <!-- 4-Stage Horizontal Flowchart -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        
+        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-2.5 relative">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-slate-100 text-slate-700">GATE 01</span>
+            <span class="text-xs text-slate-400">Day 1–3</span>
+          </div>
+          <h4 class="text-xs font-bold text-slate-900">Code &amp; Template Gate</h4>
+          <p class="text-[11px] text-slate-500 leading-relaxed">
+            Automated deployment of standard Infrastructure-as-Code and lakehouse project templates. Mandatory peer PR reviews required on 100% of merges.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-2.5 relative">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-blue-100 text-blue-700">GATE 02</span>
+            <span class="text-xs text-slate-400">Day 4–8</span>
+          </div>
+          <h4 class="text-xs font-bold text-slate-900">Automated QA Gate</h4>
+          <p class="text-[11px] text-slate-500 leading-relaxed">
+            100% pass rate across automated schema tests, data freshness checks, and integration tests running in CI/CD runner environments.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl border border-slate-200 p-5 shadow-sm space-y-2.5 relative">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-amber-100 text-amber-700">GATE 03</span>
+            <span class="text-xs text-slate-400">Day 9</span>
+          </div>
+          <h4 class="text-xs font-bold text-slate-900">FinOps & Security Audit</h4>
+          <p class="text-[11px] text-slate-500 leading-relaxed">
+            Verification of lakehouse query performance, compute cost limits, PII masking compliance, and zero client data retained locally.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl border-2 border-emerald-500 p-5 shadow-sm space-y-2.5 relative bg-emerald-50/20">
+          <div class="flex items-center justify-between">
+            <span class="text-[10px] font-mono font-bold px-2 py-0.5 rounded bg-emerald-100 text-emerald-800">GATE 04</span>
+            <span class="text-xs text-emerald-600 font-bold">Release</span>
+          </div>
+          <h4 class="text-xs font-bold text-slate-900">DoD Milestone Sign-Off</h4>
+          <p class="text-[11px] text-slate-500 leading-relaxed">
+            Objective contractual milestone verification signed by client sponsor, unlocking milestone invoice release independently of hours logged.
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Idle-Time-to-Assets Box -->
+      <div class="bg-white rounded-2xl border border-slate-200 p-6 lg:p-8 shadow-sm space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-4">
+          <div>
+            <div class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-purple-100 text-purple-700">
+              <span>REDEPLOYMENT ENGINE</span>
+            </div>
+            <h3 class="text-lg font-bold text-slate-900 mt-1">Turning Idle Time into Reusable Assets</h3>
+          </div>
+          <span class="text-xs font-mono font-semibold text-slate-500">
+            Escalation Trigger: &gt;3 Unbilled Days
+          </span>
+        </div>
+
+        <p class="text-xs text-slate-600 leading-relaxed max-w-3xl">
+          When an engineer experiences &gt;3 consecutive business days between active pod assignments, they are never left idle. The Data Delivery Manager and Principal Architects automatically assign them to active workstreams in the <strong>Practice Development & IP Lab</strong>:
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-[10px] font-mono font-bold text-purple-700 block mb-1">ASSET FACTORY 01</span>
+            <strong class="text-xs font-bold text-slate-900 block mb-1">Automated Migration Parsers</strong>
+            <p class="text-[11px] text-slate-500 leading-relaxed">Building AST SQL parsers to convert legacy stored procedures into modular lakehouse transformation models.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-[10px] font-mono font-bold text-purple-700 block mb-1">ASSET FACTORY 02</span>
+            <strong class="text-xs font-bold text-slate-900 block mb-1">Terraform Multi-Cloud Templates</strong>
+            <p class="text-[11px] text-slate-500 leading-relaxed">Updating hardened Databricks lakehouse modules across AWS, Azure, and GCP with automated cost-tagging and RBAC policies.</p>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-[10px] font-mono font-bold text-purple-700 block mb-1">ASSET FACTORY 03</span>
+            <strong class="text-xs font-bold text-slate-900 block mb-1">Vertical Semantic Models</strong>
+            <p class="text-[11px] text-slate-500 leading-relaxed">Developing pre-packaged data models (Healthcare FHIR, Retail Customer 360, B2B SaaS Net Retention metrics).</p>
+          </div>
+        </div>
+
+        <div class="p-4 rounded-xl bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-200 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="text-emerald-600 text-lg">📈</span>
+            <p class="text-xs text-emerald-900">
+              <strong>Financial Impact:</strong> Reusable assets reduce setup cycles on new customer pods by up to <strong>40%</strong>, raising project gross margins from 55% to <strong>65%+</strong>.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer Summary Bar -->
+    <footer class="pt-8 pb-12 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500 gap-4">
+      <div>
+        <span class="font-bold text-slate-900">Consulting 5.0 (C50) Project</span> &mdash; Functional Area #03 Operational Design
+      </div>
+      <div class="flex items-center gap-4 font-mono text-[11px]">
+        <span>Pod Cost: ~$32,000 / Sprint</span>
+        <span>•</span>
+        <span>Sprint Target: $71,111</span>
+        <span>•</span>
+        <span class="text-emerald-600 font-bold">Gross Margin: &ge; 55%</span>
+      </div>
+    </footer>
+
+  
+    </div>
+
+    <!-- ==================== VIEW 2: PLANNING INPUTS & ASSUMPTIONS PAGE ==================== -->
+    <div id="view-inputs" class="hidden space-y-10">
+      
+      <!-- Inputs Page Hero Header -->
+      <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-slate-200">
+        <div>
+          <div class="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-semibold mb-2">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+            FINANCIAL & CAPACITY PARAMETER ENGINE
+          </div>
+          <h2 class="text-3xl font-extrabold tracking-tight text-slate-900">
+            Planning Inputs & Operating Assumptions
+          </h2>
+          <p class="text-sm text-slate-500 mt-1 max-w-3xl">
+            Configure target gross margins, team baseline sizes, billing rates, engineer salary cost bands, and utilization targets. Values dynamically sync to the Capacity Simulator and sidebar benchmarks.
+          </p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="resetDefaultInputs()" class="px-4 py-2 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-semibold transition">
+            Reset Defaults
+          </button>
+          <button onclick="switchMainView('blueprint'); window.location.hash = 'capacity-simulator';" class="px-4 py-2 rounded-lg bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold transition shadow-sm shadow-blue-500/20">
+            View Live in Simulator &rarr;
+          </button>
+        </div>
+      </div>
+
+      <!-- Live Calculated Summary Ribbon -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-gradient-to-br from-emerald-50 to-emerald-100/40 border border-emerald-200 rounded-2xl p-5 shadow-sm">
+          <span class="text-[11px] font-mono text-emerald-700 uppercase font-bold block mb-1">Target Gross Margin</span>
+          <div class="flex items-baseline gap-2">
+            <span id="summary-target-margin" class="font-mono text-3xl font-black text-emerald-800">55%</span>
+            <span class="text-xs text-emerald-600 font-semibold" id="summary-margin-delta">&plusmn;0% base</span>
+          </div>
+          <span class="text-[11px] text-emerald-700/80 block mt-1">Minimum delivery profitability target</span>
+        </div>
+
+        <div class="bg-gradient-to-br from-blue-50 to-blue-100/40 border border-blue-200 rounded-2xl p-5 shadow-sm">
+          <span class="text-[11px] font-mono text-blue-700 uppercase font-bold block mb-1">Target Team Utilization</span>
+          <div class="flex items-baseline gap-2">
+            <span id="summary-target-util" class="font-mono text-3xl font-black text-blue-800">75%</span>
+            <span class="text-xs text-blue-600 font-semibold">60h / 80h cycle</span>
+          </div>
+          <span class="text-[11px] text-blue-700/80 block mt-1">Remaining 25% for shadowing & IP</span>
+        </div>
+
+        <div class="bg-gradient-to-br from-indigo-50 to-indigo-100/40 border border-indigo-200 rounded-2xl p-5 shadow-sm">
+          <span class="text-[11px] font-mono text-indigo-700 uppercase font-bold block mb-1">Pod Sprint Price</span>
+          <div class="flex items-baseline gap-2">
+            <span id="summary-sprint-price" class="font-mono text-3xl font-black text-indigo-800">$75,000</span>
+            <span class="text-xs text-indigo-600 font-semibold">/ 2-wk pod</span>
+          </div>
+          <span class="text-[11px] text-indigo-700/80 block mt-1">Fixed fee outcome sprint unit</span>
+        </div>
+
+        <div class="bg-gradient-to-br from-purple-50 to-purple-100/40 border border-purple-200 rounded-2xl p-5 shadow-sm">
+          <span class="text-[11px] font-mono text-purple-700 uppercase font-bold block mb-1">Annual Revenue / Pod</span>
+          <div class="flex items-baseline gap-2">
+            <span id="summary-pod-annual-rev" class="font-mono text-3xl font-black text-purple-800">$1,800,000</span>
+            <span class="text-xs text-purple-600 font-semibold">24 sprints</span>
+          </div>
+          <span class="text-[11px] text-purple-700/80 block mt-1">At full sprint run-rate</span>
+        </div>
+      </div>
+
+      <!-- Main Input Parameter Cards Grid -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        
+        <!-- Card 1: Margin & Commercial Targets -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 lg:p-7 shadow-sm space-y-6">
+          <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <div class="w-8 h-8 rounded-lg bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold">
+              %
+            </div>
+            <div>
+              <h3 class="text-base font-bold text-slate-900">Commercial & Margin Targets</h3>
+              <p class="text-xs text-slate-500">Benchmark margins and pricing metrics for outcome delivery</p>
+            </div>
+          </div>
+
+          <div class="space-y-5">
+            <!-- Target Gross Margin Slider -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <label for="input-target-margin" class="text-xs font-bold text-slate-800">Target Project Gross Margin</label>
+                <span id="disp-target-margin" class="font-mono text-xs font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-md border border-emerald-200">55%</span>
+              </div>
+              <input type="range" id="input-target-margin" min="40" max="75" step="1" value="55" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-emerald-600">
+              <div class="flex justify-between text-[10px] font-mono text-slate-400">
+                <span>40% (Floor)</span>
+                <span>55% (Target)</span>
+                <span>75% (IP-Accelerated)</span>
+              </div>
+            </div>
+
+            <!-- Target Utilization Slider -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <label for="input-target-util" class="text-xs font-bold text-slate-800">Team Billable Utilization Target</label>
+                <span id="disp-target-util" class="font-mono text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">75%</span>
+              </div>
+              <input type="range" id="input-target-util" min="60" max="90" step="1" value="75" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+              <div class="flex justify-between text-[10px] font-mono text-slate-400">
+                <span>60% (High Presales / R&D)</span>
+                <span>75% (80/10/10 Model)</span>
+                <span>90% (Maximum Load)</span>
+              </div>
+            </div>
+
+            <!-- Fixed Outcome Sprint Unit Price -->
+            <div class="space-y-1.5">
+              <label for="input-sprint-price" class="text-xs font-bold text-slate-800 block">Fixed Pod Sprint Fee (2 Weeks)</label>
+              <div class="relative">
+                <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 text-xs font-bold">$</span>
+                <input type="number" id="input-sprint-price" value="75000" step="5000" min="40000" max="150000" class="w-full pl-8 pr-4 py-2 rounded-xl border border-slate-300 text-sm font-mono font-bold text-slate-900 focus:outline-none focus:border-blue-500">
+              </div>
+              <p class="text-[11px] text-slate-500">Standard market pricing for 5 dedicated Modern Data Stack engineers over a 2-week cycle.</p>
+            </div>
+
+            <!-- Maximum Tolerated Unassigned/Bench Rate -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <label for="input-bench-target" class="text-xs font-bold text-slate-800">Max Tolerated Unassigned Time</label>
+                <span id="disp-bench-target" class="font-mono text-xs font-bold text-amber-700 bg-amber-50 px-2.5 py-1 rounded-md border border-amber-200">&lt; 8%</span>
+              </div>
+              <input type="range" id="input-bench-target" min="3" max="15" step="1" value="8" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-amber-600">
+              <div class="flex justify-between text-[10px] font-mono text-slate-400">
+                <span>3% (Tight)</span>
+                <span>8% (Baseline Target)</span>
+                <span>15% (Risk Threshold)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 2: Team Composition & Pod Scaling Baselines -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 lg:p-7 shadow-sm space-y-6">
+          <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <div class="w-8 h-8 rounded-lg bg-blue-100 text-blue-700 flex items-center justify-center font-bold">
+              👥
+            </div>
+            <div>
+              <h3 class="text-base font-bold text-slate-900">Team Baselines & Pod Ratios</h3>
+              <p class="text-xs text-slate-500">Pod sizing, cluster thresholds, and oversight allocation</p>
+            </div>
+          </div>
+
+          <div class="space-y-5">
+            <!-- Core Pod Engineer Count -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <label for="input-pod-engineers" class="text-xs font-bold text-slate-800">Core Pod Engineers (Full-Time)</label>
+                <span id="disp-pod-engineers" class="font-mono text-xs font-bold text-blue-700 bg-blue-50 px-2.5 py-1 rounded-md border border-blue-200">5 Engineers</span>
+              </div>
+              <input type="range" id="input-pod-engineers" min="3" max="8" step="1" value="5" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-blue-600">
+              <div class="flex justify-between text-[10px] font-mono text-slate-400">
+                <span>3 Engineers (Lean)</span>
+                <span>5 Engineers (Standard C50)</span>
+                <span>8 Engineers (Enterprise Pod)</span>
+              </div>
+            </div>
+
+            <!-- Pods Per Cluster Ratio -->
+            <div class="space-y-2">
+              <div class="flex justify-between items-center">
+                <label for="input-pods-per-cluster" class="text-xs font-bold text-slate-800">Pods Per Governance Cluster</label>
+                <span id="disp-pods-per-cluster" class="font-mono text-xs font-bold text-purple-700 bg-purple-50 px-2.5 py-1 rounded-md border border-purple-200">3 Pods / Cluster</span>
+              </div>
+              <input type="range" id="input-pods-per-cluster" min="2" max="5" step="1" value="3" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-purple-600">
+              <div class="flex justify-between text-[10px] font-mono text-slate-400">
+                <span>2 Pods (High Oversight)</span>
+                <span>3 Pods (Phase 2 Standard)</span>
+                <span>5 Pods (Broad Span)</span>
+              </div>
+            </div>
+
+            <!-- Architect Allocation Per Pod -->
+            <div class="grid grid-cols-2 gap-4">
+              <div class="space-y-1.5">
+                <label for="input-arch-alloc" class="text-xs font-bold text-slate-800 block">Architect Load / Pod</label>
+                <select id="input-arch-alloc" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-mono font-bold text-slate-900 bg-white focus:outline-none focus:border-blue-500">
+                  <option value="0.20">0.20 FTE (1 per 5 pods)</option>
+                  <option value="0.25" selected>0.25 FTE (1 per 4 pods max)</option>
+                  <option value="0.33">0.33 FTE (1 per 3 pods)</option>
+                  <option value="0.50">0.50 FTE (1 per 2 pods)</option>
+                </select>
+              </div>
+
+              <div class="space-y-1.5">
+                <label for="input-dm-alloc" class="text-xs font-bold text-slate-800 block">Delivery Mgr / Pod</label>
+                <select id="input-dm-alloc" class="w-full px-3 py-2 rounded-xl border border-slate-300 text-xs font-mono font-bold text-slate-900 bg-white focus:outline-none focus:border-blue-500">
+                  <option value="0.25">0.25 FTE (1 per 4 pods)</option>
+                  <option value="0.33" selected>0.33 FTE (1 per 3 pods)</option>
+                  <option value="0.50">0.50 FTE (1 per 2 pods)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Practice Phase 1 Baseline Headcount Target -->
+            <div class="space-y-1.5 pt-1">
+              <label for="input-baseline-headcount" class="text-xs font-bold text-slate-800 block">Practice Baseline Headcount (Phase 1 Target)</label>
+              <input type="number" id="input-baseline-headcount" value="20" min="10" max="100" step="5" class="w-full px-3.5 py-2 rounded-xl border border-slate-300 text-sm font-mono font-bold text-slate-900 focus:outline-none focus:border-blue-500">
+              <p class="text-[11px] text-slate-500">Baseline practice team scale (e.g. 20 FTEs for 3 active pods + leadership overlay).</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 3: Fully Loaded Compensation & Cost Assumptions -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 lg:p-7 shadow-sm space-y-6">
+          <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center font-bold">
+              💵
+            </div>
+            <div>
+              <h3 class="text-base font-bold text-slate-900">Cost Structure & Fully Loaded Salaries</h3>
+              <p class="text-xs text-slate-500">Annual base + benefits + overhead allocation per role</p>
+            </div>
+          </div>
+
+          <div class="space-y-4 text-xs">
+            <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+              <span class="font-semibold text-slate-700">Lead Data Engineer (Pod Lead)</span>
+              <div class="flex items-center gap-1 font-mono font-bold">
+                <span>$</span>
+                <input type="number" id="cost-lead-eng" value="210000" step="5000" class="w-28 text-right px-2 py-1 border border-slate-200 rounded-lg text-xs font-mono">
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+              <span class="font-semibold text-slate-700">Senior Data Engineer (Avg / FTE)</span>
+              <div class="flex items-center gap-1 font-mono font-bold">
+                <span>$</span>
+                <input type="number" id="cost-sr-eng" value="180000" step="5000" class="w-28 text-right px-2 py-1 border border-slate-200 rounded-lg text-xs font-mono">
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+              <span class="font-semibold text-slate-700">Analytics Engineer / FinOps (Avg / FTE)</span>
+              <div class="flex items-center gap-1 font-mono font-bold">
+                <span>$</span>
+                <input type="number" id="cost-analytics-eng" value="160000" step="5000" class="w-28 text-right px-2 py-1 border border-slate-200 rounded-lg text-xs font-mono">
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+              <span class="font-semibold text-slate-700">Principal Data Architect</span>
+              <div class="flex items-center gap-1 font-mono font-bold">
+                <span>$</span>
+                <input type="number" id="cost-arch" value="240000" step="5000" class="w-28 text-right px-2 py-1 border border-slate-200 rounded-lg text-xs font-mono">
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+              <span class="font-semibold text-slate-700">Data Delivery Manager</span>
+              <div class="flex items-center gap-1 font-mono font-bold">
+                <span>$</span>
+                <input type="number" id="cost-dm" value="175000" step="5000" class="w-28 text-right px-2 py-1 border border-slate-200 rounded-lg text-xs font-mono">
+              </div>
+            </div>
+
+            <div class="p-3 bg-amber-50/70 border border-amber-200 rounded-xl flex items-center justify-between">
+              <div>
+                <span class="font-bold text-amber-900 block">Calculated Core Pod Cost (Annual)</span>
+                <span class="text-[11px] text-amber-700">5 Dedicated Engineers Direct Compensation</span>
+              </div>
+              <span id="disp-annual-pod-cost" class="font-mono text-base font-extrabold text-amber-900">$890,000</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Operating Model & IP Leverage Multipliers -->
+        <div class="bg-white rounded-2xl border border-slate-200 p-6 lg:p-7 shadow-sm space-y-6">
+          <div class="flex items-center gap-3 pb-3 border-b border-slate-100">
+            <div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">
+              ⚡
+            </div>
+            <div>
+              <h3 class="text-base font-bold text-slate-900">Capacity Allocation & IP Leverage</h3>
+              <p class="text-xs text-slate-500">80/10/10 capacity model & IP acceleration efficiency gains</p>
+            </div>
+          </div>
+
+          <div class="space-y-4">
+            <!-- Client Outcome Hours % -->
+            <div class="flex items-center justify-between p-3 rounded-xl bg-blue-50 border border-blue-200">
+              <div>
+                <span class="text-xs font-bold text-blue-900 block">Direct Client Sprint Time</span>
+                <span class="text-[11px] text-blue-700">64 hrs / engineer / 2-week sprint cycle</span>
+              </div>
+              <span class="font-mono text-sm font-extrabold text-blue-800">80%</span>
+            </div>
+
+            <!-- Technical Shadowing % -->
+            <div class="flex items-center justify-between p-3 rounded-xl bg-purple-50 border border-purple-200">
+              <div>
+                <span class="text-xs font-bold text-purple-900 block">Technical Shadowing & Mentoring</span>
+                <span class="text-[11px] text-purple-700">8 hrs / engineer / 2-week sprint cycle</span>
+              </div>
+              <span class="font-mono text-sm font-extrabold text-purple-800">10%</span>
+            </div>
+
+            <!-- IP Harvesting % -->
+            <div class="flex items-center justify-between p-3 rounded-xl bg-emerald-50 border border-emerald-200">
+              <div>
+                <span class="text-xs font-bold text-emerald-900 block">Reusable Asset & IP Development</span>
+                <span class="text-[11px] text-emerald-700">8 hrs / engineer / 2-week sprint cycle</span>
+              </div>
+              <span class="font-mono text-sm font-extrabold text-emerald-800">10%</span>
+            </div>
+
+            <!-- IP Acceleration Margin Expansion -->
+            <div class="p-3.5 bg-slate-50 border border-slate-200 rounded-xl space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-slate-800">IP Reusability Time Savings</span>
+                <span id="disp-ip-savings" class="font-mono text-xs font-bold text-indigo-700">40% Setup Reduction</span>
+              </div>
+              <input type="range" id="input-ip-savings" min="15" max="60" step="5" value="40" class="w-full h-2 bg-slate-200 rounded-lg appearance-none cursor-pointer accent-indigo-600">
+              <p class="text-[10px] text-slate-500">Accelerated time-to-first-pipeline on client onboarding via pre-built Databricks Lakehouse blueprints.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Action Footer -->
+      <div class="p-6 bg-slate-900 rounded-2xl text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+        <div>
+          <h4 class="text-sm font-bold">Parameters Are Saved Locally in Real Time</h4>
+          <p class="text-xs text-slate-400 mt-0.5">Toggle back to the Blueprint to test your capacity modeling with active parameter bounds.</p>
+        </div>
+        <div class="flex items-center gap-3">
+          <button onclick="resetDefaultInputs()" class="px-4 py-2 rounded-xl border border-slate-700 hover:border-slate-500 text-xs font-mono font-bold text-slate-300 hover:text-white transition">
+            Restore Defaults
+          </button>
+          <button onclick="switchMainView('blueprint'); window.location.hash = 'capacity-simulator';" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-xs font-bold text-white transition shadow-lg shadow-blue-500/20">
+            Open Simulator &rarr;
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+</main>
+
+  <!-- ==================== INTERACTIVE JAVASCRIPT ENGINE ==================== -->
+  <script>
+
+    // ==================== GLOBAL PLANNING PARAMETERS STATE ====================
+    const planningConfig = {
+      targetMargin: 55,
+      targetUtil: 75,
+      sprintPrice: 75000,
+      benchTarget: 8,
+      podEngineers: 5,
+      podsPerCluster: 3,
+      archAlloc: 0.25,
+      dmAlloc: 0.33,
+      baselineHeadcount: 20,
+      costLeadEng: 210000,
+      costSrEng: 180000,
+      costAnalyticsEng: 160000,
+      costArch: 240000,
+      costDm: 175000,
+      ipSavings: 40
+    };
+
+    function switchMainView(view) {
+      const blueprintView = document.getElementById('view-blueprint');
+      const inputsView = document.getElementById('view-inputs');
+      const blueprintNavGroup = document.getElementById('blueprint-nav-group');
+      const inputsNavGroup = document.getElementById('inputs-nav-group');
+      const btnBlueprint = document.getElementById('tab-btn-blueprint');
+      const btnInputs = document.getElementById('tab-btn-inputs');
+
+      if (view === 'inputs') {
+        blueprintView.classList.add('hidden');
+        inputsView.classList.remove('hidden');
+        blueprintNavGroup.classList.add('hidden');
+        inputsNavGroup.classList.remove('hidden');
+        
+        btnInputs.classList.add('bg-emerald-600', 'text-white', 'shadow-sm');
+        btnInputs.classList.remove('text-slate-400');
+        btnBlueprint.classList.remove('bg-blue-600', 'text-white', 'shadow-sm');
+        btnBlueprint.classList.add('text-slate-400');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } else {
+        inputsView.classList.add('hidden');
+        blueprintView.classList.remove('hidden');
+        inputsNavGroup.classList.add('hidden');
+        blueprintNavGroup.classList.remove('hidden');
+
+        btnBlueprint.classList.add('bg-blue-600', 'text-white', 'shadow-sm');
+        btnBlueprint.classList.remove('text-slate-400');
+        btnInputs.classList.remove('bg-emerald-600', 'text-white', 'shadow-sm');
+        btnInputs.classList.add('text-slate-400');
+      }
+    }
+
+    function resetDefaultInputs() {
+      planningConfig.targetMargin = 55;
+      planningConfig.targetUtil = 75;
+      planningConfig.sprintPrice = 75000;
+      planningConfig.benchTarget = 8;
+      planningConfig.podEngineers = 5;
+      planningConfig.podsPerCluster = 3;
+      planningConfig.archAlloc = 0.25;
+      planningConfig.dmAlloc = 0.33;
+      planningConfig.baselineHeadcount = 20;
+      planningConfig.costLeadEng = 210000;
+      planningConfig.costSrEng = 180000;
+      planningConfig.costAnalyticsEng = 160000;
+      planningConfig.costArch = 240000;
+      planningConfig.costDm = 175000;
+      planningConfig.ipSavings = 40;
+      syncInputsUI();
+      applyPlanningConfig();
+    }
+
+    function syncInputsUI() {
+      if (!document.getElementById('input-target-margin')) return;
+      document.getElementById('input-target-margin').value = planningConfig.targetMargin;
+      document.getElementById('disp-target-margin').textContent = planningConfig.targetMargin + '%';
+      
+      document.getElementById('input-target-util').value = planningConfig.targetUtil;
+      document.getElementById('disp-target-util').textContent = planningConfig.targetUtil + '%';
+      
+      document.getElementById('input-sprint-price').value = planningConfig.sprintPrice;
+      
+      document.getElementById('input-bench-target').value = planningConfig.benchTarget;
+      document.getElementById('disp-bench-target').textContent = '< ' + planningConfig.benchTarget + '%';
+      
+      document.getElementById('input-pod-engineers').value = planningConfig.podEngineers;
+      document.getElementById('disp-pod-engineers').textContent = planningConfig.podEngineers + ' Engineers';
+      
+      document.getElementById('input-pods-per-cluster').value = planningConfig.podsPerCluster;
+      document.getElementById('disp-pods-per-cluster').textContent = planningConfig.podsPerCluster + ' Pods / Cluster';
+      
+      document.getElementById('input-arch-alloc').value = planningConfig.archAlloc.toFixed(2);
+      document.getElementById('input-dm-alloc').value = planningConfig.dmAlloc.toFixed(2);
+      
+      document.getElementById('input-baseline-headcount').value = planningConfig.baselineHeadcount;
+      
+      document.getElementById('cost-lead-eng').value = planningConfig.costLeadEng;
+      document.getElementById('cost-sr-eng').value = planningConfig.costSrEng;
+      document.getElementById('cost-analytics-eng').value = planningConfig.costAnalyticsEng;
+      document.getElementById('cost-arch').value = planningConfig.costArch;
+      document.getElementById('cost-dm').value = planningConfig.costDm;
+      
+      document.getElementById('input-ip-savings').value = planningConfig.ipSavings;
+      document.getElementById('disp-ip-savings').textContent = planningConfig.ipSavings + '% Setup Reduction';
+    }
+
+    function applyPlanningConfig() {
+      // 1. Sidebar bottom widgets
+      const railScale = document.getElementById('rail-stat-scale');
+      const railMargin = document.getElementById('rail-stat-margin');
+      const railUtil = document.getElementById('rail-stat-util');
+      const railRate = document.getElementById('rail-stat-rate');
+      
+      if (railScale) railScale.textContent = planningConfig.baselineHeadcount + ' FTEs';
+      if (railMargin) railMargin.textContent = '≥ ' + planningConfig.targetMargin + '%';
+      if (railUtil) railUtil.textContent = '≥ ' + planningConfig.targetUtil + '%';
+      if (railRate) railRate.textContent = '$' + (planningConfig.sprintPrice / 1000).toFixed(0) + 'k / sprint';
+
+      // 2. Summary ribbon on inputs page
+      const sumMargin = document.getElementById('summary-target-margin');
+      const sumUtil = document.getElementById('summary-target-util');
+      const sumPrice = document.getElementById('summary-sprint-price');
+      const sumAnnual = document.getElementById('summary-pod-annual-rev');
+      
+      if (sumMargin) sumMargin.textContent = planningConfig.targetMargin + '%';
+      if (sumUtil) sumUtil.textContent = planningConfig.targetUtil + '%';
+      if (sumPrice) sumPrice.textContent = '$' + planningConfig.sprintPrice.toLocaleString();
+      if (sumAnnual) sumAnnual.textContent = '$' + (planningConfig.sprintPrice * 24).toLocaleString();
+
+      // 3. Direct Core Pod annual cost (1 Lead + 2 Sr + 1.5 Analytics + 0.5 FinOps)
+      const coreCost = planningConfig.costLeadEng + (planningConfig.costSrEng * 2) + (planningConfig.costAnalyticsEng * 2);
+      const dispCost = document.getElementById('disp-annual-pod-cost');
+      if (dispCost) dispCost.textContent = '$' + coreCost.toLocaleString();
+
+      // 4. Trigger simulator re-calculation with active settings
+      const slider = document.getElementById('pod-slider');
+      if (slider && typeof updateSimulator === 'function') {
+        updateSimulator(parseInt(slider.value, 10));
+      }
+      if (slider && typeof renderStructure === 'function') {
+        renderStructure(parseInt(slider.value, 10));
+      }
+    }
+
+    document.addEventListener('DOMContentLoaded', () => {
+      // Connect Inputs Event Listeners
+      syncInputsUI();
+      applyPlanningConfig();
+
+      const bindInput = (id, field, isFloat) => {
+        const el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener('input', (e) => {
+          planningConfig[field] = isFloat ? parseFloat(e.target.value) : parseInt(e.target.value, 10);
+          syncInputsUI();
+          applyPlanningConfig();
+        });
+      };
+
+      bindInput('input-target-margin', 'targetMargin');
+      bindInput('input-target-util', 'targetUtil');
+      bindInput('input-sprint-price', 'sprintPrice');
+      bindInput('input-bench-target', 'benchTarget');
+      bindInput('input-pod-engineers', 'podEngineers');
+      bindInput('input-pods-per-cluster', 'podsPerCluster');
+      bindInput('input-arch-alloc', 'archAlloc', true);
+      bindInput('input-dm-alloc', 'dmAlloc', true);
+      bindInput('input-baseline-headcount', 'baselineHeadcount');
+      bindInput('cost-lead-eng', 'costLeadEng');
+      bindInput('cost-sr-eng', 'costSrEng');
+      bindInput('cost-analytics-eng', 'costAnalyticsEng');
+      bindInput('cost-arch', 'costArch');
+      bindInput('cost-dm', 'costDm');
+      bindInput('input-ip-savings', 'ipSavings');
+
+      // Simulator Elements
+      const slider = document.getElementById('pod-slider');
+      const podDisplay = document.getElementById('pod-count-display');
+      const totalFte = document.getElementById('stat-total-fte');
+      const archLoad = document.getElementById('stat-architect-load');
+      const archStatus = document.getElementById('stat-architect-status');
+      const dmLoad = document.getElementById('stat-dm-load');
+      const dmStatus = document.getElementById('stat-dm-status');
+      const velocity = document.getElementById('stat-velocity');
+      const insightTitle = document.getElementById('insight-title');
+      const insightDesc = document.getElementById('insight-desc');
+
+      // Staffing rules: each group of up to 3 pods has one architect and one delivery manager.
+      // Beyond 3 pods, one central Resource Operations Lead also supports all clusters.
+      function staffing(pods) {
+        const clusterSize = planningConfig.podsPerCluster || 3;
+        const clusters = Math.ceil(pods / clusterSize);
+        return { clusters, arch: clusters, dm: clusters, ops: pods > clusterSize ? 1 : 0 };
+      }
+
+      function updateSimulator(pods) {
+        podDisplay.textContent = `${pods} Active ${pods === 1 ? 'Pod' : 'Pods'}`;
+        
+        // Dynamic staffing block based on planningConfig
+        const coreFtePerPod = planningConfig.podEngineers || 5;
+        const archFtePerPod = planningConfig.archAlloc || 0.25;
+        const dmFtePerPod = planningConfig.dmAlloc || 0.33;
+        const ftePerPodBlock = coreFtePerPod + archFtePerPod + dmFtePerPod;
+
+        const totalFteCount = (pods * ftePerPodBlock).toFixed(1);
+        totalFte.textContent = `${totalFteCount} FTEs`;
+        
+        // Principal Architect
+        const totalArchFte = pods * archFtePerPod;
+        const archHeads = staffing(pods).arch;
+        const archUtil = Math.round((totalArchFte / archHeads) * 100);
+        archLoad.textContent = `${archUtil}% Load`;
+        archStatus.textContent = `${archHeads} Principal Architect${archHeads > 1 ? 's' : ''}`;
+
+        // Data Delivery Manager
+        const totalDmFte = pods * dmFtePerPod;
+        const dmHeads = staffing(pods).dm;
+        const dmUtil = Math.round((totalDmFte / dmHeads) * 100);
+        dmLoad.textContent = `${dmUtil}% Load`;
+        dmStatus.textContent = `${dmHeads} Delivery Manager${dmHeads > 1 ? 's' : ''}`;
+
+        // Quarterly Velocity: 6 Sprints per Quarter per Pod
+        const qVelocity = pods * 6;
+        velocity.textContent = `${qVelocity} Sprint Units`;
+
+        // Dynamic Narrative Insights based on Pod Count
+        if (pods <= 2) {
+          insightTitle.textContent = "Early Stage (1–2 Pods): More Time for Shadowing & IP";
+          insightDesc.textContent = `At ${pods} pod(s), the architect spends only ${Math.round(pods * 25)}% of their time on pod oversight. The rest goes to technical shadowing and IP development, including capturing first reusable templates.`;
+        } else if (pods === 3) {
+          insightTitle.textContent = "Baseline 20-Person Model: Optimal Operating Balance";
+          insightDesc.textContent = "At 3 active pods (15 dedicated engineers), the Delivery Manager is near full capacity, and the Principal Architect has 75% on pod oversight and 25% for shadowing and IP development. This represents the peak efficiency of Phase 1 before cluster splitting is required.";
+        } else if (pods <= 6) {
+          insightTitle.textContent = "Phase 2 Scaling (4–6 Pods): Cluster Split Recommended";
+          insightDesc.textContent = `At ${pods} pods (${totalFteCount} FTEs), the governance overlay is more than one person can manage. Trigger Phase 2 to move from a shared governance overlay to Dedicated 3-Pod Technical Clusters with a full-time Resource Operations Lead.`;
+        } else {
+          insightTitle.textContent = "Phase 3 Enterprise Scale (7–10 Pods): Global Delivery Center";
+          insightDesc.textContent = `At ${pods} pods (${totalFteCount} FTEs), the firm delivers ${qVelocity} bi-weekly outcome sprint units per quarter. Requires multi-cluster governance and 24/7 Managed DataOps follow-the-sun rotations.`;
+        }
+      }
+
+      // Draws each cluster with its own oversight roles centered above its pods
+      const diagram = document.getElementById('structure-diagram');
+      function renderStructure(pods) {
+        const st = staffing(pods);
+        const qVel = pods * 6;
+        const chip = (color, label) =>
+          `<span class="inline-flex items-center justify-center w-7 h-7 rounded-md ${color} text-white text-[10px] font-bold" title="${label}">${label[0]}</span>`;
+        const dot = '<span class="w-3.5 h-3.5 rounded-full bg-blue-500"></span>';
+
+        let html = '';
+        if (st.ops > 0) {
+          html += `
+            <div class="rounded-lg border-2 border-dashed border-emerald-400 bg-white p-3 flex flex-wrap items-center justify-between gap-2">
+              <div class="flex items-center gap-2">
+                ${chip('bg-emerald-500', 'Resource Ops Lead')}
+                <span class="text-[11px] font-mono font-bold uppercase text-slate-600">Central Resource Operations Hub (all clusters)</span>
+              </div>
+              <span class="text-[11px] font-mono text-slate-500">Quarterly output: <strong class="text-indigo-700">${qVel} sprint units</strong></span>
+            </div>`;
+        } else {
+          html += `<div class="text-right text-[11px] font-mono text-slate-500">Quarterly output: <strong class="text-indigo-700">${qVel} sprint units</strong></div>`;
+        }
+
+        html += '<div class="flex flex-wrap gap-4 justify-center items-start">';
+        for (let c = 0; c < st.clusters; c++) {
+          const clusterSize = planningConfig.podsPerCluster || 3;
+          const inCluster = Math.min(clusterSize, pods - c * clusterSize);
+          const oversightLabel = st.clusters > 1 ? `Cluster ${c + 1} Leads` : 'Governance Overlay';
+          let podHtml = '';
+          for (let p = 0; p < inCluster; p++) {
+            podHtml += `
+              <div class="rounded-lg border border-blue-300 bg-blue-50 p-2 w-28">
+                <div class="text-[10px] font-mono font-bold text-blue-800 mb-1">Pod ${c * 3 + p + 1}</div>
+                <div class="flex flex-wrap gap-1 mb-1.5">${dot.repeat(planningConfig.podEngineers || 5)}</div>
+                <div class="text-[10px] text-slate-500">6 sprints / qtr</div>
+              </div>`;
+          }
+          html += `
+            <div class="flex flex-col items-center">
+              <div class="rounded-lg border-2 border-dashed border-slate-400 bg-white p-2 flex flex-col items-center gap-1.5">
+                <span class="text-[10px] font-mono font-bold uppercase text-slate-600">${oversightLabel}</span>
+                <div class="flex gap-1.5">${chip('bg-violet-500', 'Architect')}${chip('bg-amber-500', 'Delivery Manager')}</div>
+              </div>
+              <div class="w-px h-4 bg-slate-400"></div>
+              <div class="rounded-lg border border-slate-300 bg-white p-2 space-y-1">
+                <div class="text-[10px] font-mono font-bold text-slate-500 uppercase text-center">${st.clusters > 1 ? 'Cluster ' + (c + 1) : 'Pods'}</div>
+                <div class="flex gap-2">${podHtml}</div>
+              </div>
+            </div>`;
+        }
+        html += '</div>';
+        diagram.innerHTML = html;
+      }
+
+      slider.addEventListener('input', (e) => renderStructure(parseInt(e.target.value, 10)));
+      renderStructure(3);
+      slider.addEventListener('input', (e) => updateSimulator(parseInt(e.target.value, 10)));
+      updateSimulator(3); // Initialized at baseline 3 pods
+
+      // Active Navigation Link Tracker on Scroll
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('.nav-item');
+
+      window.addEventListener('scroll', () => {
+        let currentSectionId = '';
+        const scrollPosition = window.scrollY + 160;
+
+        sections.forEach(section => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            currentSectionId = section.getAttribute('id');
+          }
+        });
+
+        navLinks.forEach(link => {
+          link.classList.remove('active', 'bg-blue-600/20', 'text-blue-400', 'border', 'border-blue-500/30');
+          if (link.getAttribute('href') === `#${currentSectionId}`) {
+            link.classList.add('active', 'bg-blue-600/20', 'text-blue-400', 'border', 'border-blue-500/30');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
