@@ -740,7 +740,7 @@
           <!-- Stat 1: Total Practice Headcount -->
           <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center hover:border-blue-300 transition-colors">
             <span class="text-[11px] font-mono text-slate-500 uppercase font-semibold block">Total Practice Headcount</span>
-            <span id="stat-total-fte" class="font-mono text-2xl font-black text-blue-700 my-1 block">10.2 FTEs</span>
+            <span id="stat-total-fte" class="font-mono text-2xl font-black text-blue-700 my-1 block">11 People</span>
             <span id="stat-fte-label" class="text-[11px] text-slate-400 font-medium">Core Squads + Overlay</span>
           </div>
 
@@ -769,6 +769,37 @@
             <span id="stat-velocity" class="font-mono text-2xl font-black text-indigo-700 my-1 block">18 Sprint Units</span>
             <span class="text-[11px] text-slate-400 font-medium">6 Sprints / Qtr / Pod</span>
           </div>
+        </div>
+
+        <!-- Practice-Level Financials (whole-head leadership) -->
+        <div class="space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <h4 class="text-sm font-bold text-slate-900">Practice Revenue &amp; Margin at This Scale</h4>
+            <p class="text-[11px] text-slate-500">Revenue = pods &times; sprint fee &times; 24 sprints. Cost = squad salaries + whole-person leaders (architect and delivery manager per cluster, plus Resource Ops Lead above 3 pods).</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
+              <span class="text-[11px] font-mono text-slate-500 uppercase font-semibold block">Annual Revenue</span>
+              <span id="fin-revenue" class="font-mono text-xl font-black text-indigo-700 my-1 block">$4,788,000</span>
+              <span id="fin-quarter-revenue" class="text-[11px] text-slate-400 font-medium">$1,197,000 / quarter</span>
+            </div>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
+              <span class="text-[11px] font-mono text-slate-500 uppercase font-semibold block">Direct Delivery Cost</span>
+              <span id="fin-cost" class="font-mono text-xl font-black text-slate-900 my-1 block">$2,275,000</span>
+              <span id="fin-cost-detail" class="text-[11px] text-slate-400 font-medium">Squads + leaders</span>
+            </div>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
+              <span class="text-[11px] font-mono text-slate-500 uppercase font-semibold block">Gross Profit</span>
+              <span id="fin-profit" class="font-mono text-xl font-black text-emerald-700 my-1 block">$2,513,000</span>
+              <span class="text-[11px] text-slate-400 font-medium">Revenue less direct cost</span>
+            </div>
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
+              <span class="text-[11px] font-mono text-slate-500 uppercase font-semibold block">Practice Gross Margin</span>
+              <span id="fin-margin" class="font-mono text-xl font-black text-slate-900 my-1 block">52.5%</span>
+              <span id="fin-margin-status" class="inline-block text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700">Below 55% target</span>
+            </div>
+          </div>
+          <p id="fin-note" class="text-[11px] text-slate-500"></p>
         </div>
 
         <!-- Multi-Pod Structure Diagram (updates with the slider and tier) -->
@@ -1028,7 +1059,7 @@
             <span id="summary-core-price" class="font-mono text-3xl font-black text-blue-800">$66,500</span>
             <span class="text-xs text-blue-600 font-semibold">/ 2-wk sprint</span>
           </div>
-          <span class="text-[11px] text-blue-700/80 block mt-1">3.0 FTEs — $133k/mo midmarket</span>
+          <span id="lbl-ribbon-core" class="text-[11px] text-blue-700/80 block mt-1">3.0 FTEs — $133k/mo midmarket</span>
         </div>
 
         <div class="bg-gradient-to-br from-indigo-50 to-indigo-100/40 border border-indigo-200 rounded-2xl p-5 shadow-sm">
@@ -1037,7 +1068,7 @@
             <span id="summary-scale-price" class="font-mono text-3xl font-black text-indigo-800">$105,000</span>
             <span class="text-xs text-indigo-600 font-semibold">/ 2-wk sprint</span>
           </div>
-          <span class="text-[11px] text-indigo-700/80 block mt-1">5.0 FTEs — $210k/mo enterprise</span>
+          <span id="lbl-ribbon-scale" class="text-[11px] text-indigo-700/80 block mt-1">5.0 FTEs — $210k/mo enterprise</span>
         </div>
 
         <div class="bg-gradient-to-br from-purple-50 to-purple-100/40 border border-purple-200 rounded-2xl p-5 shadow-sm">
@@ -1084,26 +1115,26 @@
             <div class="space-y-1.5">
               <div class="flex justify-between items-center">
                 <label for="input-core-sprint-price" class="text-xs font-bold text-slate-800">Core Pod Sprint Fee (3 FTEs / 2 Weeks)</label>
-                <span class="text-[11px] font-mono text-emerald-700 font-bold">$133,000 / month</span>
+                <span id="lbl-core-month" class="text-[11px] font-mono text-emerald-700 font-bold">$133,000 / month</span>
               </div>
               <div class="relative">
                 <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 text-xs font-bold">$</span>
                 <input type="number" id="input-core-sprint-price" value="66500" step="2500" min="50000" max="90000" class="w-full pl-8 pr-4 py-2 rounded-xl border border-slate-300 text-sm font-mono font-bold text-slate-900 focus:outline-none focus:border-blue-500">
               </div>
-              <p class="text-[11px] text-slate-500">Target price for midmarket lakehouse &amp; dbt migrations (6-sprint contract: $399k).</p>
+              <p class="text-[11px] text-slate-500">Target price for midmarket lakehouse &amp; dbt migrations (6-sprint contract: <span id="lbl-core-block">$399,000</span>).</p>
             </div>
 
             <!-- Scale Pod Sprint Price Input -->
             <div class="space-y-1.5">
               <div class="flex justify-between items-center">
                 <label for="input-scale-sprint-price" class="text-xs font-bold text-slate-800">Scale Pod Sprint Fee (5 FTEs / 2 Weeks)</label>
-                <span class="text-[11px] font-mono text-blue-700 font-bold">$210,000 / month</span>
+                <span id="lbl-scale-month" class="text-[11px] font-mono text-blue-700 font-bold">$210,000 / month</span>
               </div>
               <div class="relative">
                 <span class="absolute inset-y-0 left-0 pl-3.5 flex items-center text-slate-400 text-xs font-bold">$</span>
                 <input type="number" id="input-scale-sprint-price" value="105000" step="5000" min="80000" max="150000" class="w-full pl-8 pr-4 py-2 rounded-xl border border-slate-300 text-sm font-mono font-bold text-slate-900 focus:outline-none focus:border-blue-500">
               </div>
-              <p class="text-[11px] text-slate-500">Enterprise streaming &amp; Unity Catalog replatforming (6-sprint contract: $630k).</p>
+              <p class="text-[11px] text-slate-500">Enterprise streaming &amp; Unity Catalog replatforming (6-sprint contract: <span id="lbl-scale-block">$630,000</span>).</p>
             </div>
 
             <!-- Fixed Quarterly Commitment Block -->
@@ -1175,6 +1206,14 @@
               <div class="flex items-center gap-1 font-mono font-bold">
                 <span>$</span>
                 <input type="number" id="cost-dm" value="185000" step="5000" class="w-28 text-right px-2 py-1 border border-slate-200 rounded-lg text-xs font-mono">
+              </div>
+            </div>
+
+            <div class="flex items-center justify-between pb-2 border-b border-slate-100">
+              <span class="font-semibold text-slate-700">Resource Operations Lead <span class="text-[10px] font-mono text-amber-600">(placeholder)</span></span>
+              <div class="flex items-center gap-1 font-mono font-bold">
+                <span>$</span>
+                <input type="number" id="cost-ops-lead" value="185000" step="5000" class="w-28 text-right px-2 py-1 border border-slate-200 rounded-lg text-xs font-mono">
               </div>
             </div>
           </div>
@@ -1260,6 +1299,7 @@
       costPlatformEng: 185000,
       costArch: 260000,
       costDm: 185000,
+      costOpsLead: 185000,
 
       ipSavings: 40
     };
@@ -1375,6 +1415,7 @@
       planningConfig.costPlatformEng = 185000;
       planningConfig.costArch = 260000;
       planningConfig.costDm = 185000;
+      planningConfig.costOpsLead = 185000;
 
       syncInputsUI();
       applyPlanningConfig();
@@ -1394,6 +1435,7 @@
       document.getElementById('cost-platform-eng').value = planningConfig.costPlatformEng;
       document.getElementById('cost-arch').value = planningConfig.costArch;
       document.getElementById('cost-dm').value = planningConfig.costDm;
+      document.getElementById('cost-ops-lead').value = planningConfig.costOpsLead;
     }
 
     function applyPlanningConfig() {
@@ -1416,6 +1458,16 @@
       if (sumCore) sumCore.textContent = '$' + planningConfig.coreSprintPrice.toLocaleString();
       if (sumScale) sumScale.textContent = '$' + planningConfig.scaleSprintPrice.toLocaleString();
       if (sumQuarterly) sumQuarterly.textContent = '$' + (planningConfig.coreSprintPrice * 6).toLocaleString();
+
+      // 2b. Dynamic price labels on the Inputs page
+      const money = (n) => '$' + Math.round(n).toLocaleString();
+      const setT = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+      setT('lbl-core-month', money(planningConfig.coreSprintPrice * 2) + ' / month');
+      setT('lbl-scale-month', money(planningConfig.scaleSprintPrice * 2) + ' / month');
+      setT('lbl-core-block', money(planningConfig.coreSprintPrice * 6));
+      setT('lbl-scale-block', money(planningConfig.scaleSprintPrice * 6));
+      setT('lbl-ribbon-core', '3.0 FTEs — $' + Math.round(planningConfig.coreSprintPrice * 2 / 1000) + 'k/mo midmarket');
+      setT('lbl-ribbon-scale', '5.0 FTEs — $' + Math.round(planningConfig.scaleSprintPrice * 2 / 1000) + 'k/mo enterprise');
 
       // 3. Live Financial Reconciliation Calculations
       const coreFin = calculatePodFinancials('core');
@@ -1460,8 +1512,15 @@
 
     function updateSimulator(pods) {
       const fin = calculatePodFinancials(planningConfig.selectedTier);
-      const podBlockFTE = fin.squadFTE + fin.archAlloc + fin.dmAlloc;
-      const totalHeadcount = (pods * podBlockFTE + (pods > 3 ? 1 : 0)).toFixed(1);
+      // Whole-person leadership: one architect and one delivery manager per cluster,
+      // plus one central Resource Operations Lead once there is more than one cluster.
+      const clusterSizeCfg = planningConfig.podsPerCluster || 3;
+      const clustersNeeded = Math.ceil(pods / clusterSizeCfg);
+      const opsHeads = pods > clusterSizeCfg ? 1 : 0;
+      const engineers = pods * fin.squadFTE;
+      const leaders = clustersNeeded * 2 + opsHeads;
+      const totalPeople = engineers + leaders;
+      const totalHeadcount = totalPeople; // people, not fractional FTE
 
       // Update UI Elements
       const podDisplay = document.getElementById('pod-count-display');
@@ -1469,8 +1528,8 @@
       const fteLabel = document.getElementById('stat-fte-label');
 
       if (podDisplay) podDisplay.textContent = `${pods} Active ${pods === 1 ? 'Pod' : 'Pods'}`;
-      if (totalFte) totalFte.textContent = `${totalHeadcount} FTEs`;
-      if (fteLabel) fteLabel.textContent = planningConfig.selectedTier === 'core' ? "Core Squads (3 FTE) + Overlay" : "Scale Squads (5 FTE) + Overlay";
+      if (totalFte) totalFte.textContent = `${totalPeople} People`;
+      if (fteLabel) fteLabel.textContent = `${engineers} engineers + ${leaders} leaders`;
 
       // Leadership Staffing Calculations
       const clusterSize = planningConfig.podsPerCluster || 3;
@@ -1494,6 +1553,33 @@
       if (dmLoadEl) dmLoadEl.textContent = `${dmLoad}% Load`;
       if (dmStatusEl) dmStatusEl.textContent = `${dmHeads} Delivery Manager${dmHeads > 1 ? 's' : ''}`;
 
+
+      // ---- Practice-level financials (whole-person leaders) ----
+      const money2 = (n) => '$' + Math.round(n).toLocaleString();
+      const setText = (id, v) => { const el = document.getElementById(id); if (el) el.textContent = v; };
+      const annualRevenue = pods * fin.sprintPrice * 24;
+      const squadCost = pods * fin.squadDirectCost;
+      const leaderCost = clustersNeeded * (planningConfig.costArch + planningConfig.costDm) + opsHeads * planningConfig.costOpsLead;
+      const practiceCost = squadCost + leaderCost;
+      const practiceProfit = annualRevenue - practiceCost;
+      const practiceMargin = annualRevenue > 0 ? (practiceProfit / annualRevenue) * 100 : 0;
+      const target = planningConfig.targetMargin;
+      setText('fin-revenue', money2(annualRevenue));
+      setText('fin-quarter-revenue', money2(annualRevenue / 4) + ' / quarter');
+      setText('fin-cost', money2(practiceCost));
+      setText('fin-cost-detail', `Squads ${money2(squadCost)} + leaders ${money2(leaderCost)}`);
+      setText('fin-profit', money2(practiceProfit));
+      setText('fin-margin', practiceMargin.toFixed(1) + '%');
+      const statusEl = document.getElementById('fin-margin-status');
+      if (statusEl) {
+        const ok = practiceMargin >= target;
+        statusEl.textContent = ok ? `Meets ${target}% target` : `Below ${target}% target by ${(target - practiceMargin).toFixed(1)} pts`;
+        statusEl.className = 'inline-block text-[10px] font-mono font-bold px-2 py-0.5 rounded-full ' + (ok ? 'bg-emerald-100 text-emerald-700' : 'bg-amber-100 text-amber-700');
+      }
+      const requiredPrice = practiceCost / (pods * 24 * (1 - target / 100));
+      const podMargin = fin.actualMargin.toFixed(1);
+      setText('fin-note', `Pod-level margin (leaders charged only for the share each pod uses) is ${podMargin}%. The practice-level figure is lower because leaders are whole people. Sprint fee needed to reach ${target}% at this scale: ${money2(requiredPrice)}.`);
+
       // Quarterly Output: 6 sprints per quarter per pod
       const qVelocity = pods * 6;
       const velocityEl = document.getElementById('stat-velocity');
@@ -1512,7 +1598,7 @@
           insightDesc.textContent = `At 3 active pods, delivery governance reaches peak efficiency. Architects are at ${archLoad}% load and Delivery Managers at ${dmLoad}%. This is the maximum recommended span before splitting into Phase 2 dedicated clusters.`;
         } else if (pods <= 6) {
           insightTitle.textContent = "Phase 2 Multi-Cluster: Dedicated Cluster Leads Required";
-          insightDesc.textContent = `At ${pods} pods (${totalHeadcount} FTEs), leadership is grouped into 2 distinct 3-pod clusters with a centralized Resource Operations Lead managing 6-week forward scheduling.`;
+          insightDesc.textContent = `At ${pods} pods (${totalPeople} people), leadership is grouped into 2 distinct 3-pod clusters with a centralized Resource Operations Lead managing 6-week forward scheduling.`;
         } else {
           insightTitle.textContent = "Enterprise Practice Scale: Program Management Office";
           insightDesc.textContent = `At ${pods} active pods, the firm delivers ${qVelocity} bi-weekly sprint units per quarter with multi-cluster governance and 24/7 Managed DataOps support.`;
@@ -1593,7 +1679,9 @@
         const el = document.getElementById(id);
         if (!el) return;
         el.addEventListener('input', (e) => {
-          planningConfig[field] = isFloat ? parseFloat(e.target.value) : parseInt(e.target.value, 10);
+          const parsed = isFloat ? parseFloat(e.target.value) : parseInt(e.target.value, 10);
+          if (isNaN(parsed)) return; // ignore empty/invalid entry so values never become NaN
+          planningConfig[field] = parsed;
           syncInputsUI();
           applyPlanningConfig();
         });
@@ -1608,6 +1696,7 @@
       bindInput('cost-platform-eng', 'costPlatformEng');
       bindInput('cost-arch', 'costArch');
       bindInput('cost-dm', 'costDm');
+      bindInput('cost-ops-lead', 'costOpsLead');
 
       // Slider listener
       const slider = document.getElementById('pod-slider');
