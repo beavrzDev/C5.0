@@ -982,7 +982,9 @@
         </div>
       </div>
     </section>
-<!-- ==================== VIEW 2: PLANNING INPUTS & ASSUMPTIONS PAGE ==================== -->
+    </div>
+
+    <!-- ==================== VIEW 2: PLANNING INPUTS & ASSUMPTIONS PAGE ==================== -->
     <div id="view-inputs" class="hidden space-y-10">
       
       <!-- Inputs Page Hero Header -->
@@ -1187,13 +1189,13 @@
         <div class="p-5 rounded-2xl bg-emerald-50 border-2 border-emerald-300 space-y-3">
           <div class="flex items-center justify-between">
             <span class="font-mono text-xs font-bold uppercase text-emerald-800">Core Pod Financial Model (3 FTEs)</span>
-            <span class="px-2 py-0.5 rounded bg-emerald-200 text-emerald-900 font-mono text-[10px] font-bold">Realized Margin: 56.2%</span>
+            <span id="recon-core-margin-badge" class="px-2 py-0.5 rounded bg-emerald-200 text-emerald-900 font-mono text-[10px] font-bold">Realized Margin: 56.2%</span>
           </div>
           <div class="space-y-1 text-xs text-slate-700 leading-relaxed">
-            <p><strong>Direct Labor:</strong> $235k (Lead) + $200k (Sr) + $175k (AE) = <strong>$610,000 / yr</strong>.</p>
-            <p><strong>Governance Overlay:</strong> 0.20 Arch ($52k) + 0.20 DM ($37k) = <strong>$89,000 / yr</strong>.</p>
-            <p><strong>Total Direct Cost:</strong> $699,000 / yr &rarr; <strong>$29,125 / sprint</strong>.</p>
-            <p class="pt-1 text-emerald-900 font-bold">Selling at $66,500 / sprint yields 56.2% gross margin ($37,375 gross profit / sprint).</p>
+            <p><strong>Direct Labor:</strong> <span id="recon-core-labor">$235k (Lead) + $200k (Sr) + $175k (AE) = $610,000 / yr</span>.</p>
+            <p><strong>Governance Overlay:</strong> <span id="recon-core-overlay">0.20 Arch ($52k) + 0.20 DM ($37k) = $89,000 / yr</span>.</p>
+            <p><strong>Total Direct Cost:</strong> <span id="recon-core-total">$699,000 / yr &rarr; $29,125 / sprint</span>.</p>
+            <p id="recon-core-profit" class="pt-1 text-emerald-900 font-bold">Selling at $66,500 / sprint yields 56.2% gross margin ($37,375 gross profit / sprint).</p>
           </div>
         </div>
 
@@ -1201,13 +1203,13 @@
         <div class="p-5 rounded-2xl bg-blue-50 border-2 border-blue-300 space-y-3">
           <div class="flex items-center justify-between">
             <span class="font-mono text-xs font-bold uppercase text-blue-800">Scale Pod Financial Model (5 FTEs)</span>
-            <span class="px-2 py-0.5 rounded bg-blue-200 text-blue-900 font-mono text-[10px] font-bold">Realized Margin: 55.5%</span>
+            <span id="recon-scale-margin-badge" class="px-2 py-0.5 rounded bg-blue-200 text-blue-900 font-mono text-[10px] font-bold">Realized Margin: 55.5%</span>
           </div>
           <div class="space-y-1 text-xs text-slate-700 leading-relaxed">
-            <p><strong>Direct Labor:</strong> $235k + (2 &times; $200k) + $175k + $185k = <strong>$995,000 / yr</strong>.</p>
-            <p><strong>Governance Overlay:</strong> 0.25 Arch ($65k) + 0.33 DM ($61k) = <strong>$126,000 / yr</strong>.</p>
-            <p><strong>Total Direct Cost:</strong> $1,121,000 / yr &rarr; <strong>$46,708 / sprint</strong>.</p>
-            <p class="pt-1 text-blue-900 font-bold">Selling at $105,000 / sprint yields 55.5% gross margin ($58,292 gross profit / sprint).</p>
+            <p><strong>Direct Labor:</strong> <span id="recon-scale-labor">$235k + (2 &times; $200k) + $175k + $185k = $995,000 / yr</span>.</p>
+            <p><strong>Governance Overlay:</strong> <span id="recon-scale-overlay">0.25 Arch ($65k) + 0.33 DM ($61k) = $126,000 / yr</span>.</p>
+            <p><strong>Total Direct Cost:</strong> <span id="recon-scale-total">$1,121,000 / yr &rarr; $46,708 / sprint</span>.</p>
+            <p id="recon-scale-profit" class="pt-1 text-blue-900 font-bold">Selling at $105,000 / sprint yields 55.5% gross margin ($58,292 gross profit / sprint).</p>
           </div>
         </div>
 
@@ -1230,7 +1232,9 @@
       </div>
 
     </div>
-<!-- ==================== INTERACTIVE JAVASCRIPT ENGINE ==================== -->
+  </main>
+
+  <!-- ==================== INTERACTIVE JAVASCRIPT ENGINE ==================== -->
   <script>
     // ==================== GLOBAL PLANNING PARAMETERS STATE ====================
     const planningConfig = {
@@ -1413,7 +1417,41 @@
       if (sumScale) sumScale.textContent = '$' + planningConfig.scaleSprintPrice.toLocaleString();
       if (sumQuarterly) sumQuarterly.textContent = '$' + (planningConfig.coreSprintPrice * 6).toLocaleString();
 
-      // 3. Trigger simulator recalculation
+      // 3. Live Financial Reconciliation Calculations
+      const coreFin = calculatePodFinancials('core');
+      const scaleFin = calculatePodFinancials('scale');
+
+      const rCoreBadge = document.getElementById('recon-core-margin-badge');
+      const rCoreLabor = document.getElementById('recon-core-labor');
+      const rCoreOverlay = document.getElementById('recon-core-overlay');
+      const rCoreTotal = document.getElementById('recon-core-total');
+      const rCoreProfit = document.getElementById('recon-core-profit');
+
+      if (rCoreBadge) rCoreBadge.textContent = `Realized Margin: ${coreFin.actualMargin.toFixed(1)}%`;
+      if (rCoreLabor) rCoreLabor.textContent = `$${(planningConfig.costLeadEng/1000).toFixed(0)}k (Lead) + $${(planningConfig.costSrEng/1000).toFixed(0)}k (Sr) + $${(planningConfig.costAnalyticsEng/1000).toFixed(0)}k (AE) = $${coreFin.squadDirectCost.toLocaleString()} / yr`;
+      if (rCoreOverlay) rCoreOverlay.textContent = `0.20 Arch ($${(planningConfig.costArch*0.2/1000).toFixed(0)}k) + 0.20 DM ($${(planningConfig.costDm*0.2/1000).toFixed(0)}k) = $${coreFin.governanceCost.toLocaleString()} / yr`;
+      if (rCoreTotal) rCoreTotal.textContent = `$${coreFin.totalAnnualCost.toLocaleString()} / yr → $${Math.round(coreFin.sprintDirectCost).toLocaleString()} / sprint`;
+      if (rCoreProfit) {
+        const profit = Math.round(coreFin.sprintPrice - coreFin.sprintDirectCost);
+        rCoreProfit.textContent = `Selling at $${coreFin.sprintPrice.toLocaleString()} / sprint yields ${coreFin.actualMargin.toFixed(1)}% gross margin ($${profit.toLocaleString()} gross profit / sprint).`;
+      }
+
+      const rScaleBadge = document.getElementById('recon-scale-margin-badge');
+      const rScaleLabor = document.getElementById('recon-scale-labor');
+      const rScaleOverlay = document.getElementById('recon-scale-overlay');
+      const rScaleTotal = document.getElementById('recon-scale-total');
+      const rScaleProfit = document.getElementById('recon-scale-profit');
+
+      if (rScaleBadge) rScaleBadge.textContent = `Realized Margin: ${scaleFin.actualMargin.toFixed(1)}%`;
+      if (rScaleLabor) rScaleLabor.textContent = `$${(planningConfig.costLeadEng/1000).toFixed(0)}k + (2 × $${(planningConfig.costSrEng/1000).toFixed(0)}k) + $${(planningConfig.costAnalyticsEng/1000).toFixed(0)}k + $${(planningConfig.costPlatformEng/1000).toFixed(0)}k = $${scaleFin.squadDirectCost.toLocaleString()} / yr`;
+      if (rScaleOverlay) rScaleOverlay.textContent = `0.25 Arch ($${(planningConfig.costArch*0.25/1000).toFixed(0)}k) + 0.33 DM ($${(planningConfig.costDm*0.33/1000).toFixed(0)}k) = $${scaleFin.governanceCost.toLocaleString()} / yr`;
+      if (rScaleTotal) rScaleTotal.textContent = `$${scaleFin.totalAnnualCost.toLocaleString()} / yr → $${Math.round(scaleFin.sprintDirectCost).toLocaleString()} / sprint`;
+      if (rScaleProfit) {
+        const sProfit = Math.round(scaleFin.sprintPrice - scaleFin.sprintDirectCost);
+        rScaleProfit.textContent = `Selling at $${scaleFin.sprintPrice.toLocaleString()} / sprint yields ${scaleFin.actualMargin.toFixed(1)}% gross margin ($${sProfit.toLocaleString()} gross profit / sprint).`;
+      }
+
+      // 4. Trigger simulator recalculation
       const slider = document.getElementById('pod-slider');
       const pods = slider ? parseInt(slider.value, 10) : 3;
       updateSimulator(pods);
