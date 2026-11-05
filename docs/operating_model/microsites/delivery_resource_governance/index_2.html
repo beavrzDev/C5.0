@@ -342,16 +342,24 @@
 
       </div>
 
-      <!-- Commercial Mandate Banner -->
-      <div class="p-4 rounded-xl bg-blue-50 border border-blue-200 flex items-start gap-3">
-        <span class="text-blue-600 font-bold text-base mt-0.5">💡</span>
-        <div class="space-y-1">
-          <strong class="text-blue-900 font-semibold text-xs">Delivery Mandate &amp; Mobilization Runway:</strong>
-          <p class="text-xs text-slate-600">
-            Clients purchase structured, milestone-driven outcomes delivered through reserved pod capacity. Internal operations govern delivery by committed vs. uncommitted sprint blocks across a 6-week rolling horizon. All client SOW contracts incorporate a mandatory <strong>3-to-4 week mobilization runway</strong> post-deposit before Sprint 1 Day 1, establishing controlled start dates, squad alignment, and platform scaffolding.
-          </p>
+      <!-- Commercial Mandate Banner (Collapsible Notation) -->
+      <details class="group p-3.5 sm:p-4 rounded-xl bg-blue-50 border border-blue-200 transition-all">
+        <summary class="flex items-center justify-between cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+          <div class="flex items-center gap-2.5">
+            <span class="text-blue-600 font-bold text-base">💡</span>
+            <strong class="text-blue-900 font-semibold text-xs">Delivery Mandate &amp; Mobilization Runway</strong>
+            <span class="text-[10px] font-mono text-blue-700 bg-blue-100/80 px-2 py-0.5 rounded border border-blue-300/60 hidden sm:inline-block">Commercial Rule</span>
+          </div>
+          <div class="flex items-center gap-1.5 text-blue-700 font-mono text-[10px] font-semibold flex-shrink-0">
+            <span class="group-open:hidden text-blue-500">Details</span>
+            <span class="hidden group-open:inline text-blue-700">Collapse</span>
+            <svg class="w-4 h-4 text-blue-500 group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+        </summary>
+        <div class="mt-2.5 pt-2.5 border-t border-blue-200/70 pl-7 text-xs text-slate-600 leading-relaxed">
+          Clients purchase structured, milestone-driven outcomes delivered through reserved pod capacity. Internal operations govern delivery by committed vs. uncommitted sprint blocks across a 6-week rolling horizon. All client SOW contracts incorporate a mandatory <strong>3-to-4 week mobilization runway</strong> post-deposit before Sprint 1 Day 1, establishing controlled start dates, squad alignment, and platform scaffolding.
         </div>
-      </div>
+      </details>
     </section>
 <!-- ==================== SECTION 2: PHASE 1 POD TOPOLOGY ==================== -->
     <section id="phase1-topology" class="scroll-mt-8 space-y-6">
@@ -427,18 +435,22 @@
               </div>
             </div>
 
-            <!-- Sprint 0 Platform Foundation Callout -->
-            <div class="p-3 rounded-xl border border-emerald-200 bg-emerald-50/70 space-y-1">
-              <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono font-bold text-emerald-800 uppercase flex items-center gap-1.5">
-                  <span>🛠️</span> Sprint 0 Platform Foundation
-                </span>
-                <span class="text-[9px] font-mono font-semibold bg-emerald-200/80 text-emerald-900 px-1.5 py-0.5 rounded">1–2 Wk Scaffolding</span>
-              </div>
-              <p class="text-[11px] text-slate-600 leading-relaxed">
+            <!-- Sprint 0 Platform Foundation Callout (Collapsible) -->
+            <details class="group p-3 rounded-xl border border-emerald-200 bg-emerald-50/70 transition-all">
+              <summary class="flex items-center justify-between cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+                <div class="flex items-center gap-2">
+                  <span class="text-emerald-800 font-bold text-xs">🛠️</span>
+                  <span class="text-[10px] font-mono font-bold text-emerald-800 uppercase">Sprint 0 Platform Foundation</span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[9px] font-mono font-semibold bg-emerald-200/80 text-emerald-900 px-1.5 py-0.5 rounded">1–2 Wk Scaffolding</span>
+                  <svg class="w-3.5 h-3.5 text-emerald-700 group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+              </summary>
+              <div class="mt-2 pt-2 border-t border-emerald-200/80 text-[11px] text-slate-600 leading-relaxed pl-5">
                 For custom or greenfield cloud environments lacking starter DABs, a 1-to-2 week <strong>Sprint 0</strong> is executed by the Principal Architect and Pod Lead to provision Unity Catalog metastore bindings, storage credentials, Private Link networking, and tailored DAB scaffolds. Full Core Pod mobilizes on Sprint 1 with zero infrastructure friction.
-              </p>
-            </div>
+              </div>
+            </details>
 
             <!-- Shared Leadership Overlay Box -->
             <div class="p-3.5 rounded-xl bg-slate-900 text-white border border-slate-800 space-y-2">
@@ -677,18 +689,22 @@
               </ul>
             </div>
 
-            <!-- Staggered Pod Intake Cadence Rule -->
-            <div class="p-3.5 rounded-xl bg-amber-50/80 border border-amber-200 space-y-1.5 text-xs">
-              <div class="flex items-center justify-between">
-                <strong class="text-amber-950 font-bold text-xs flex items-center gap-1.5">
-                  <span>⏱️</span> Staggered Pod Intake Rule
-                </strong>
-                <span class="text-[9px] font-mono font-bold bg-amber-200/80 text-amber-900 px-1.5 py-0.5 rounded">&ge; 1 Sprint Separation</span>
-              </div>
-              <p class="text-[11px] text-slate-600 leading-relaxed">
+            <!-- Staggered Pod Intake Cadence Rule (Collapsible) -->
+            <details class="group p-3.5 rounded-xl bg-amber-50/80 border border-amber-200 text-xs transition-all">
+              <summary class="flex items-center justify-between cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+                <div class="flex items-center gap-2">
+                  <span class="text-amber-700 font-bold text-sm">⏱️</span>
+                  <strong class="text-amber-950 font-bold text-xs">Staggered Pod Intake Rule</strong>
+                </div>
+                <div class="flex items-center gap-2">
+                  <span class="text-[9px] font-mono font-bold bg-amber-200/80 text-amber-900 px-1.5 py-0.5 rounded">&ge; 1 Sprint Separation</span>
+                  <svg class="w-3.5 h-3.5 text-amber-600 group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+              </summary>
+              <div class="mt-2.5 pt-2 border-t border-amber-200/80 pl-5 text-[11px] text-slate-600 leading-relaxed">
                 Within any delivery cluster, new pod kickoffs must be staggered by a minimum of <strong>one 2-week sprint cycle</strong>. A single Principal Architect cannot onboard more than one new client pod concurrently—preventing front-loaded intake spikes (40%–60% Arch load) from creating architectural governance or PR review bottlenecks.
-              </p>
-            </div>
+              </div>
+            </details>
           </div>
         </div>
 
@@ -742,18 +758,22 @@
                 </div>
               </div>
 
-              <!-- Controlled Kickoffs & Mobilization Runway -->
-              <div class="p-3 rounded-xl bg-blue-50/70 border border-blue-200 space-y-1">
-                <div class="flex items-center justify-between">
-                  <strong class="text-blue-950 font-bold text-xs flex items-center gap-1.5">
-                    <span>🗓️</span> Controlled Kickoffs &amp; 3–4 Wk Mobilization Runway
-                  </strong>
-                  <span class="text-[9px] font-mono font-bold bg-blue-200/80 text-blue-900 px-1.5 py-0.5 rounded">Paced Onboarding</span>
-                </div>
-                <p class="text-[11px] text-slate-600 leading-relaxed">
+              <!-- Controlled Kickoffs & Mobilization Runway (Collapsible) -->
+              <details class="group p-3 rounded-xl bg-blue-50/70 border border-blue-200 text-xs transition-all">
+                <summary class="flex items-center justify-between cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+                  <div class="flex items-center gap-2">
+                    <span class="text-blue-700 font-bold text-sm">🗓️</span>
+                    <strong class="text-blue-950 font-bold text-xs">Controlled Kickoffs &amp; 3–4 Wk Mobilization Runway</strong>
+                  </div>
+                  <div class="flex items-center gap-2">
+                    <span class="text-[9px] font-mono font-bold bg-blue-200/80 text-blue-900 px-1.5 py-0.5 rounded">Paced Onboarding</span>
+                    <svg class="w-3.5 h-3.5 text-blue-600 group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                  </div>
+                </summary>
+                <div class="mt-2 pt-2 border-t border-blue-200/80 pl-5 text-[11px] text-slate-600 leading-relaxed">
                   Kickoff dates are locked into a forward-looking capacity calendar. The standard <strong>3-to-4 week mobilization runway</strong> post-deposit gives recruitment and resource management a predictable window to assemble the squad, provision cloud sandboxes, and complete Sprint 0 platform tasks without burning unassigned bench payroll.
-                </p>
-              </div>
+                </div>
+              </details>
 
               <!-- Granular Skill Inventory Matching -->
               <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
@@ -943,16 +963,24 @@
           <p id="fin-note" class="text-[11px] text-slate-500"></p>
         </div>
 
-        <!-- Bootstrap Phase Margin Caveat Banner -->
-        <div class="p-4 rounded-xl bg-amber-50/80 border border-amber-200 text-xs text-slate-700 flex items-start gap-3">
-          <span class="text-amber-600 font-bold text-base mt-0.5">⚠️</span>
-          <div class="space-y-1">
-            <strong class="text-amber-900 font-bold text-xs">Bootstrap Phase Margin Caveat (&lt;3 Pods):</strong>
-            <p class="text-slate-600 leading-relaxed">
-              At early scale (&lt;3 pods), carrying full-time senior cluster leaders ($260k Principal Architect + $185k Delivery Manager) creates planned leadership drag, temporarily reducing practice gross margin below the 55% target. This planned capital investment is mitigated by maintaining an active sales pipeline and project backlog queue that brings Pods 2, 3, and 4 online quickly to reach peak cluster leverage. Cluster scalability relies on staggered pod intake cadences across a 12-week steady-state horizon.
-            </p>
+        <!-- Bootstrap Phase Margin Caveat Banner (Collapsible) -->
+        <details class="group p-3.5 sm:p-4 rounded-xl bg-amber-50/90 border border-amber-200 text-xs transition-all">
+          <summary class="flex items-center justify-between cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+            <div class="flex items-center gap-2.5">
+              <span class="text-amber-600 font-bold text-base">⚠️</span>
+              <strong class="text-amber-900 font-bold text-xs">Bootstrap Phase Margin Caveat (&lt;3 Pods)</strong>
+              <span class="text-[10px] font-mono text-amber-700 bg-amber-100/80 px-2 py-0.5 rounded border border-amber-300/60 hidden sm:inline-block">Scale Advisory</span>
+            </div>
+            <div class="flex items-center gap-1.5 text-amber-700 font-mono text-[10px] font-semibold flex-shrink-0">
+              <span class="group-open:hidden text-amber-600">Details</span>
+              <span class="hidden group-open:inline text-amber-800">Collapse</span>
+              <svg class="w-4 h-4 text-amber-600 group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+          </summary>
+          <div class="mt-2.5 pt-2.5 border-t border-amber-200/80 pl-7 text-xs text-slate-600 leading-relaxed">
+            At early scale (&lt;3 pods), carrying full-time senior cluster leaders ($260k Principal Architect + $185k Delivery Manager) creates planned leadership drag, temporarily reducing practice gross margin below the 55% target. This planned capital investment is mitigated by maintaining an active sales pipeline and project backlog queue that brings Pods 2, 3, and 4 online quickly to reach peak cluster leverage. Cluster scalability relies on staggered pod intake cadences across a 12-week steady-state horizon.
           </div>
-        </div>
+        </details>
 
         <!-- Dynamic Capacity Insight Callout -->
         <div id="simulator-insight" class="p-4 rounded-xl bg-blue-50/70 border border-blue-200 text-xs text-slate-700 flex items-start gap-3">
@@ -982,16 +1010,24 @@
         </p>
       </div>
 
-      <!-- Client Presentation & Focus Rule Banner -->
-      <div class="p-4 rounded-xl bg-purple-50 border border-purple-200 flex items-start gap-3">
-        <span class="text-purple-600 font-bold text-base mt-0.5">🎯</span>
-        <div class="space-y-0.5">
-          <strong class="text-purple-900 font-semibold text-xs">Dedicated Squad Focus &amp; Leadership Governance Mandate:</strong>
-          <p class="text-xs text-slate-600">
-            Clients purchase <strong>100% dedicated squad attention</strong>—pod engineers devote all 80 hours per 2-week sprint cycle to contractual backlog execution without splitting time across internal R&amp;D or administrative overhead. The <strong>80/10/10 capacity model governs the Leadership Overlay</strong> (Principal Architects and Delivery Managers), ensuring active gate reviews, engineer upskilling, and systematic IP harvesting.
-          </p>
+      <!-- Client Presentation & Focus Rule Banner (Collapsible Notation) -->
+      <details class="group p-3.5 sm:p-4 rounded-xl bg-purple-50 border border-purple-200 transition-all">
+        <summary class="flex items-center justify-between cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+          <div class="flex items-center gap-2.5">
+            <span class="text-purple-600 font-bold text-base">🎯</span>
+            <strong class="text-purple-900 font-semibold text-xs">Dedicated Squad Focus &amp; Leadership Governance Mandate</strong>
+            <span class="text-[10px] font-mono text-purple-700 bg-purple-100/80 px-2 py-0.5 rounded border border-purple-300/60 hidden sm:inline-block">Capacity Rule</span>
+          </div>
+          <div class="flex items-center gap-1.5 text-purple-700 font-mono text-[10px] font-semibold flex-shrink-0">
+            <span class="group-open:hidden text-purple-500">Details</span>
+            <span class="hidden group-open:inline text-purple-700">Collapse</span>
+            <svg class="w-4 h-4 text-purple-500 group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+        </summary>
+        <div class="mt-2.5 pt-2.5 border-t border-purple-200/70 pl-7 text-xs text-slate-600 leading-relaxed">
+          Clients purchase <strong>100% dedicated squad attention</strong>—pod engineers devote all 80 hours per 2-week sprint cycle to contractual backlog execution without splitting time across internal R&amp;D or administrative overhead. The <strong>80/10/10 capacity model governs the Leadership Overlay</strong> (Principal Architects and Delivery Managers), ensuring active gate reviews, engineer upskilling, and systematic IP harvesting.
         </div>
-      </div>
+      </details>
 
       <!-- Two-Tier Capacity Allocation Visual Cards -->
       <div class="grid grid-cols-1 lg:grid-cols-2 gap-5">
@@ -1182,50 +1218,59 @@
         </div>
       </div>
 
-      <!-- IP Margin Engine & Governance Protocols Grid -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+      <!-- IP Margin Engine & Governance Protocols Grid (Collapsible Protocols) -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-5 items-start">
         
-        <!-- Callout 1: Sprint Backlog Rollover Protocol -->
-        <div class="p-5 rounded-2xl bg-blue-50/90 border border-blue-200 text-xs text-slate-700 flex flex-col justify-between">
-          <div class="space-y-2">
-            <div class="flex items-center gap-2">
-              <span class="text-blue-600 font-bold text-lg">🔄</span>
-              <strong class="text-blue-950 font-bold text-xs block">Sprint Backlog Rollover Protocol</strong>
+        <!-- Callout 1: Sprint Backlog Rollover Protocol (Collapsible) -->
+        <details class="group p-4 sm:p-5 rounded-2xl bg-blue-50/90 border border-blue-200 text-xs text-slate-700 transition-all">
+          <summary class="flex items-center justify-between cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+            <div class="flex items-center gap-2.5">
+              <span class="text-blue-600 font-bold text-base">🔄</span>
+              <strong class="text-blue-950 font-bold text-xs">Sprint Backlog Rollover Protocol</strong>
             </div>
-            <p class="text-slate-600 leading-relaxed text-[11px]">
+            <svg class="w-4 h-4 text-blue-500 group-open:rotate-180 transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="mt-2.5 pt-2.5 border-t border-blue-200/70 text-slate-600 leading-relaxed text-[11px] space-y-2">
+            <p>
               Sprints operate on fixed capacity reservations. Backlog tickets are story-pointed and prioritized by business value. If an engineering task is uncompleted at Day 10 due to underlying schema complexity, it does not trigger a contract dispute or unpaid overtime. Unfinished tickets automatically roll into the top of the next sprint's backlog prioritization under client product ownership. Sprint capacity burn continues predictably.
             </p>
+            <span class="block pt-1 font-mono text-[10px] font-bold text-blue-700">Predictable Capacity Burn</span>
           </div>
-          <span class="pt-2 mt-2 border-t border-blue-200/60 font-mono text-[10px] font-bold text-blue-700">Predictable Capacity Burn</span>
-        </div>
+        </details>
 
-        <!-- Callout 2: Reusable IP Engine -->
-        <div class="p-5 rounded-2xl bg-purple-50/90 border border-purple-200 text-xs text-slate-700 flex flex-col justify-between">
-          <div class="space-y-2">
-            <div class="flex items-center gap-2">
-              <span class="text-purple-600 font-bold text-lg">🚀</span>
-              <strong class="text-purple-900 font-bold text-xs block">The IP Compounding Loop &amp; Margin Expansion</strong>
+        <!-- Callout 2: Reusable IP Engine (Collapsible) -->
+        <details class="group p-4 sm:p-5 rounded-2xl bg-purple-50/90 border border-purple-200 text-xs text-slate-700 transition-all">
+          <summary class="flex items-center justify-between cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+            <div class="flex items-center gap-2.5">
+              <span class="text-purple-600 font-bold text-base">🚀</span>
+              <strong class="text-purple-900 font-bold text-xs">The IP Compounding Loop &amp; Margin Expansion</strong>
             </div>
-            <p class="text-slate-600 leading-relaxed text-[11px]">
+            <svg class="w-4 h-4 text-purple-500 group-open:rotate-180 transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="mt-2.5 pt-2.5 border-t border-purple-200/70 text-slate-600 leading-relaxed text-[11px] space-y-2">
+            <p>
               Every 10% IP Lab allocation feeds the Brickbuilder Asset Factory. Reusable assets reduce new client onboarding and pipeline construction by <strong>35%–40%</strong>. Because sprint fees are fixed based on outcome delivery, efficiency gains translate directly into expanded gross margins (<strong>55% baseline &rarr; 68%+ realized</strong>).
             </p>
+            <span class="block pt-1 font-mono text-[10px] font-bold text-purple-700">55% &rarr; 68%+ Margin Expansion</span>
           </div>
-          <span class="pt-2 mt-2 border-t border-purple-200/60 font-mono text-[10px] font-bold text-purple-700">55% &rarr; 68%+ Margin Expansion</span>
-        </div>
+        </details>
 
-        <!-- Callout 3: Client Dependency Protection Box -->
-        <div class="p-5 rounded-2xl bg-amber-50/80 border border-amber-200 text-xs text-slate-700 flex flex-col justify-between">
-          <div class="space-y-2">
-            <div class="flex items-center gap-2">
-              <span class="text-amber-600 font-bold text-lg">🛡️</span>
-              <strong class="text-amber-900 font-bold text-xs block">Client Dependency Stop-the-Clock Protocol</strong>
+        <!-- Callout 3: Client Dependency Protection Box (Collapsible) -->
+        <details class="group p-4 sm:p-5 rounded-2xl bg-amber-50/80 border border-amber-200 text-xs text-slate-700 transition-all">
+          <summary class="flex items-center justify-between cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+            <div class="flex items-center gap-2.5">
+              <span class="text-amber-600 font-bold text-base">🛡️</span>
+              <strong class="text-amber-900 font-bold text-xs">Client Dependency Stop-the-Clock Protocol</strong>
             </div>
-            <p class="text-slate-600 leading-relaxed text-[11px]">
+            <svg class="w-4 h-4 text-amber-600 group-open:rotate-180 transition-transform duration-200 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </summary>
+          <div class="mt-2.5 pt-2.5 border-t border-amber-200/70 text-slate-600 leading-relaxed text-[11px] space-y-2">
+            <p>
               If a client encounters internal access delays, cloud credential roadblocks, or missing data schemas, the pod immediately pivots to secondary backlog items or internal Brickbuilder IP sprints. <strong>Sprint capacity billing continues without interruption.</strong> The firm never absorbs client organizational friction on its payroll.
             </p>
+            <span class="block pt-1 font-mono text-[10px] font-bold text-amber-800">Zero Payroll Absorption</span>
           </div>
-          <span class="pt-2 mt-2 border-t border-amber-200/60 font-mono text-[10px] font-bold text-amber-800">Zero Payroll Absorption</span>
-        </div>
+        </details>
 
       </div>
     </section>
@@ -1508,16 +1553,24 @@
 
       </div>
 
-      <!-- Bootstrap Phase Margin Caveat Callout -->
-      <div class="p-5 rounded-2xl bg-amber-50/90 border border-amber-300 text-xs text-slate-700 flex items-start gap-4 shadow-sm">
-        <span class="text-amber-600 font-bold text-xl mt-0.5">⚠️</span>
-        <div class="space-y-1">
-          <strong class="text-amber-950 font-bold text-sm block">Bootstrap Phase Margin Caveat (&lt;3 Pods) &amp; Mitigation Strategy:</strong>
-          <p class="text-slate-600 leading-relaxed">
-            At early scale (&lt;3 pods), carrying full-time senior cluster leaders ($260k Principal Architect + $185k Delivery Manager) creates planned leadership drag, temporarily dipping practice gross margin below the 55% target. This early margin compression is an acknowledged strategic capital investment. It is mitigated by maintaining an active sales pipeline and project backlog queue that brings Pods 2, 3, and 4 online quickly to reach optimal 80% cluster leadership utilization.
-          </p>
+      <!-- Bootstrap Phase Margin Caveat Callout (Collapsible) -->
+      <details class="group p-4 sm:p-5 rounded-2xl bg-amber-50/90 border border-amber-300 text-xs shadow-sm transition-all">
+        <summary class="flex items-center justify-between cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+          <div class="flex items-center gap-3">
+            <span class="text-amber-600 font-bold text-lg sm:text-xl">⚠️</span>
+            <strong class="text-amber-950 font-bold text-xs sm:text-sm">Bootstrap Phase Margin Caveat (&lt;3 Pods) &amp; Mitigation Strategy</strong>
+            <span class="text-[10px] font-mono text-amber-700 bg-amber-100/80 px-2 py-0.5 rounded border border-amber-300/60 hidden sm:inline-block">Scale Advisory</span>
+          </div>
+          <div class="flex items-center gap-1.5 text-amber-700 font-mono text-[10px] font-semibold flex-shrink-0">
+            <span class="group-open:hidden text-amber-600">Details</span>
+            <span class="hidden group-open:inline text-amber-800">Collapse</span>
+            <svg class="w-4 h-4 text-amber-600 group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+          </div>
+        </summary>
+        <div class="mt-3 pt-3 border-t border-amber-200/80 pl-8 text-xs text-slate-600 leading-relaxed">
+          At early scale (&lt;3 pods), carrying full-time senior cluster leaders ($260k Principal Architect + $185k Delivery Manager) creates planned leadership drag, temporarily dipping practice gross margin below the 55% target. This early margin compression is an acknowledged strategic capital investment. It is mitigated by maintaining an active sales pipeline and project backlog queue that brings Pods 2, 3, and 4 online quickly to reach optimal 80% cluster leadership utilization.
         </div>
-      </div>
+      </details>
 
       <!-- Action Footer -->
       <div class="p-6 bg-slate-900 rounded-2xl text-white flex flex-col sm:flex-row sm:items-center justify-between gap-4">
