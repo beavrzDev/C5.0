@@ -801,6 +801,21 @@
           </div>
         </div>
 
+        <!-- Multi-Pod Structure Diagram (updates with the slider and tier) -->
+        <div class="space-y-3">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
+            <h4 class="text-sm font-bold text-slate-900">Live Team Structure</h4>
+            <p id="structure-subtext" class="text-[11px] text-slate-500">Core pod = 3 dedicated engineers. Clusters group up to 4 pods under 1 leadership pair (80% load).</p>
+          </div>
+          <div id="structure-diagram" class="rounded-xl border border-slate-200 bg-slate-50 p-4 space-y-3 overflow-x-auto"></div>
+          <div class="flex flex-wrap gap-4 text-[11px] text-slate-500">
+            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-blue-500"></span>Dedicated Engineer</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-violet-500"></span>Principal Architect</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-500"></span>Delivery Manager</span>
+            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-500"></span>Resource Operations Lead</span>
+          </div>
+        </div>
+
         <!-- Practice-Level Financials (whole-head leadership & IP leverage) -->
         <div class="space-y-3">
           <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
@@ -821,7 +836,7 @@
             <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
               <span class="text-[11px] font-mono text-slate-500 uppercase font-semibold block">Gross Profit</span>
               <span id="fin-profit" class="font-mono text-xl font-black text-emerald-700 my-1 block">$2,513,000</span>
-              <span class="text-[11px] text-slate-400 font-medium">Revenue less direct costs</span>
+              <span id="fin-profit-detail" class="text-[11px] text-slate-400 font-medium">Revenue less direct costs</span>
             </div>
             <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
               <span class="text-[11px] font-mono text-slate-500 uppercase font-semibold block">Practice Gross Margin</span>
@@ -830,21 +845,6 @@
             </div>
           </div>
           <p id="fin-note" class="text-[11px] text-slate-500"></p>
-        </div>
-
-        <!-- Multi-Pod Structure Diagram (updates with the slider and tier) -->
-        <div class="space-y-3">
-          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-1">
-            <h4 class="text-sm font-bold text-slate-900">Live Team Topology Structure</h4>
-            <p id="structure-subtext" class="text-[11px] text-slate-500">Core pod = 3 dedicated engineers. Clusters group up to 4 pods under 1 leadership pair (80% load).</p>
-          </div>
-          <div id="structure-diagram" class="rounded-xl border border-slate-200 bg-slate-50 p-4 space-y-3 overflow-x-auto"></div>
-          <div class="flex flex-wrap gap-4 text-[11px] text-slate-500">
-            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-full bg-blue-500"></span>Dedicated Engineer</span>
-            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-violet-500"></span>Principal Architect</span>
-            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-amber-500"></span>Delivery Manager</span>
-            <span class="inline-flex items-center gap-1.5"><span class="w-3 h-3 rounded-sm bg-emerald-500"></span>Resource Operations Lead</span>
-          </div>
         </div>
 
         <!-- Dynamic Capacity Insight Callout -->
