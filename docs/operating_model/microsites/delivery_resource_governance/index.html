@@ -122,7 +122,7 @@
           </a>
           <a href="#sprint-allocation" class="nav-item flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition-all group">
             <span class="font-mono text-[10px] text-slate-500 group-hover:text-blue-400 transition-colors">05</span>
-            <span>80/10/10 Capacity Rule</span>
+            <span>70/20/10 Capacity Engine</span>
           </a>
           <a href="#quality-ip" class="nav-item flex items-center gap-3 px-3.5 py-2.5 rounded-lg text-xs font-semibold text-slate-300 hover:text-white hover:bg-slate-800 transition-all group">
             <span class="font-mono text-[10px] text-slate-500 group-hover:text-blue-400 transition-colors">06</span>
@@ -312,7 +312,7 @@
               <span class="text-xs text-blue-600 font-semibold font-mono">The Sweet Spot</span>
             </div>
             <h3 class="text-base font-bold text-slate-900 mb-2">Prescriptive Outcomes &amp; Governed Pods</h3>
-            <p class="text-xs text-slate-500 mb-5">Prescriptive deliverables defined as an agreed <strong>Target Milestone Roadmap</strong> estimated in velocity points (not a rigid fixed-price warranty), executed in dedicated 2-week sprint blocks. Sprint capacity is reserved; client owns backlog priority, while Pod Lead owns technical gating.</p>
+            <p class="text-xs text-slate-500 mb-5">Prescriptive deliverables defined as an agreed <strong>Target Milestone Backlog</strong> estimated in velocity points and executed across fixed-capacity 2-week sprints—not an unhedged fixed-price warranty. Sprint capacity is reserved; client owns backlog priority, while Pod Lead owns technical gating.</p>
 
             <ul class="space-y-3.5 text-xs text-slate-700">
               <li class="flex items-start gap-2.5">
@@ -342,24 +342,46 @@
 
       </div>
 
-      <!-- Commercial Mandate Banner (Collapsible Notation) -->
-      <details class="group p-3.5 sm:p-4 rounded-xl bg-blue-50 border border-blue-200 transition-all">
-        <summary class="flex items-center justify-between cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
-          <div class="flex items-center gap-2.5">
-            <span class="text-blue-600 font-bold text-base">💡</span>
-            <strong class="text-blue-900 font-semibold text-xs">Delivery Mandate &amp; Mobilization Runway</strong>
-            <span class="text-[10px] font-mono text-blue-700 bg-blue-100/80 px-2 py-0.5 rounded border border-blue-300/60 hidden sm:inline-block">Commercial Rule</span>
+      <!-- Commercial Mandate & Protocol Banners (Collapsible Notations) -->
+      <div class="space-y-3">
+        <!-- Sprint Backlog Rollover Protocol -->
+        <details class="group p-3.5 sm:p-4 rounded-xl bg-blue-50/80 border border-blue-200 transition-all">
+          <summary class="flex items-center justify-between cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+            <div class="flex items-center gap-2.5">
+              <span class="text-blue-600 font-bold text-base">🔄</span>
+              <strong class="text-blue-900 font-semibold text-xs">Sprint Backlog Rollover Protocol</strong>
+              <span class="text-[10px] font-mono text-blue-700 bg-blue-100/80 px-2 py-0.5 rounded border border-blue-300/60 hidden sm:inline-block">Capacity Rule</span>
+            </div>
+            <div class="flex items-center gap-1.5 text-blue-700 font-mono text-[10px] font-semibold flex-shrink-0">
+              <span class="group-open:hidden text-blue-500">Details</span>
+              <span class="hidden group-open:inline text-blue-700">Collapse</span>
+              <svg class="w-4 h-4 text-blue-500 group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+          </summary>
+          <div class="mt-2.5 pt-2.5 border-t border-blue-200/70 pl-7 text-xs text-slate-600 leading-relaxed">
+            Sprints operate on fixed capacity reservations. Backlog tickets are story-pointed and prioritized by business value. If an engineering task is uncompleted at Day 10 due to underlying schema complexity, it automatically rolls into the top of the next sprint's backlog prioritization under client product ownership. Sprint capacity burn continues predictably without contractual disputes or unbilled overtime.
           </div>
-          <div class="flex items-center gap-1.5 text-blue-700 font-mono text-[10px] font-semibold flex-shrink-0">
-            <span class="group-open:hidden text-blue-500">Details</span>
-            <span class="hidden group-open:inline text-blue-700">Collapse</span>
-            <svg class="w-4 h-4 text-blue-500 group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+        </details>
+
+        <!-- Delivery Mandate & Mobilization Runway -->
+        <details class="group p-3.5 sm:p-4 rounded-xl bg-blue-50 border border-blue-200 transition-all">
+          <summary class="flex items-center justify-between cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
+            <div class="flex items-center gap-2.5">
+              <span class="text-blue-600 font-bold text-base">💡</span>
+              <strong class="text-blue-900 font-semibold text-xs">Delivery Mandate &amp; Mobilization Runway</strong>
+              <span class="text-[10px] font-mono text-blue-700 bg-blue-100/80 px-2 py-0.5 rounded border border-blue-300/60 hidden sm:inline-block">Commercial Rule</span>
+            </div>
+            <div class="flex items-center gap-1.5 text-blue-700 font-mono text-[10px] font-semibold flex-shrink-0">
+              <span class="group-open:hidden text-blue-500">Details</span>
+              <span class="hidden group-open:inline text-blue-700">Collapse</span>
+              <svg class="w-4 h-4 text-blue-500 group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+            </div>
+          </summary>
+          <div class="mt-2.5 pt-2.5 border-t border-blue-200/70 pl-7 text-xs text-slate-600 leading-relaxed">
+            Clients purchase structured, milestone-driven outcomes delivered through reserved pod capacity. Internal operations govern delivery by committed vs. uncommitted sprint blocks across a 6-week rolling horizon. All client SOW contracts incorporate a mandatory <strong>3-to-4 week mobilization runway</strong> post-deposit before Sprint 1 Day 1, establishing controlled start dates, squad alignment, and platform scaffolding.
           </div>
-        </summary>
-        <div class="mt-2.5 pt-2.5 border-t border-blue-200/70 pl-7 text-xs text-slate-600 leading-relaxed">
-          Clients purchase structured, milestone-driven outcomes delivered through reserved pod capacity. Internal operations govern delivery by committed vs. uncommitted sprint blocks across a 6-week rolling horizon. All client SOW contracts incorporate a mandatory <strong>3-to-4 week mobilization runway</strong> post-deposit before Sprint 1 Day 1, establishing controlled start dates, squad alignment, and platform scaffolding.
-        </div>
-      </details>
+        </details>
+      </div>
     </section>
 <!-- ==================== SECTION 2: PHASE 1 POD TOPOLOGY ==================== -->
     <section id="phase1-topology" class="scroll-mt-8 space-y-6">
@@ -455,8 +477,8 @@
             <!-- Shared Leadership Overlay Box -->
             <div class="p-3.5 rounded-xl bg-slate-900 text-white border border-slate-800 space-y-2">
               <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono uppercase text-violet-300 font-bold tracking-wider">Shared Leadership Overlay (4:1 Span)</span>
-                <span class="text-[10px] font-mono text-emerald-400 font-bold">80% Active Load</span>
+                <span class="text-[10px] font-mono uppercase text-violet-300 font-bold tracking-wider">Shared Leadership Overlay (4:1 Span — 70/20/10 Model)</span>
+                <span class="text-[10px] font-mono text-emerald-400 font-bold">70% Delivery Load</span>
               </div>
               <div class="grid grid-cols-2 gap-2 text-xs">
                 <div class="p-2 rounded-lg bg-slate-800/80 border border-slate-700">
@@ -464,18 +486,18 @@
                     <span>Principal Architect</span>
                     <span class="text-violet-300 font-mono text-[10px]">0.20 FTE</span>
                   </div>
-                  <p class="text-[10px] text-slate-400 mt-0.5">Scoping, high-risk design, DoD gates (4 pods = 80% load).</p>
+                  <p class="text-[10px] text-slate-400 mt-0.5">Scoping, high-risk design, DoD gates (4 pods = 80% span; 70% delivery).</p>
                 </div>
                 <div class="p-2 rounded-lg bg-slate-800/80 border border-slate-700">
                   <div class="flex items-center justify-between font-bold text-slate-200">
                     <span>Delivery Manager</span>
                     <span class="text-amber-300 font-mono text-[10px]">0.20 FTE</span>
                   </div>
-                  <p class="text-[10px] text-slate-400 mt-0.5">Sprint cadence, velocity, schedules (4 pods = 80% load).</p>
+                  <p class="text-[10px] text-slate-400 mt-0.5">Sprint cadence, velocity, schedules (4 pods = 80% span; 70% delivery).</p>
                 </div>
               </div>
               <p class="text-[10px] text-slate-400 pt-1 border-t border-slate-800">
-                <strong class="text-slate-300">12-Week Steady-State Average:</strong> Leadership ratios (0.20 Arch / 0.20 DM) represent a 12-week block average. Initial onboarding requires 40%–60% Architect bandwidth during Sprint 0/1 scoping, tapering to 10%–15% in steady-state execution.
+                <strong class="text-slate-300">70/20/10 Model:</strong> Senior leaders operate under 70% delivery governance, 20% technical presales, and 10% IP lab—freeing pod engineers to remain 100% committed to sprint backlog execution.
               </p>
             </div>
           </div>
@@ -484,7 +506,7 @@
           <div class="pt-4 border-t border-slate-100 flex items-center justify-between bg-emerald-50/60 p-3.5 rounded-xl border border-emerald-200">
             <div>
               <span class="text-[10px] font-mono text-emerald-900 uppercase font-bold block">Sprint Rate &amp; Base Margin</span>
-              <span class="text-xs text-emerald-700 font-medium">Direct Cost: ~$29,125 / sprint • <strong>Base Margin: 56.2%</strong></span>
+              <span class="text-xs text-emerald-700 font-medium">Direct Cost: ~$28,013 / sprint • <strong>Base Margin: 57.9%</strong></span>
             </div>
             <div class="text-right">
               <span class="text-xl font-extrabold font-mono text-emerald-800">$399,000</span>
@@ -563,8 +585,8 @@
             <!-- Shared Leadership Overlay Box -->
             <div class="p-3.5 rounded-xl bg-slate-900 text-white border border-slate-800 space-y-2">
               <div class="flex items-center justify-between">
-                <span class="text-[10px] font-mono uppercase text-violet-300 font-bold tracking-wider">Shared Leadership Overlay (3:1 Span)</span>
-                <span class="text-[10px] font-mono text-blue-400 font-bold">75%–100% Load</span>
+                <span class="text-[10px] font-mono uppercase text-violet-300 font-bold tracking-wider">Shared Leadership Overlay (3:1 Span — 70/20/10 Model)</span>
+                <span class="text-[10px] font-mono text-blue-400 font-bold">70% Delivery Load</span>
               </div>
               <div class="grid grid-cols-2 gap-2 text-xs">
                 <div class="p-2 rounded-lg bg-slate-800/80 border border-slate-700">
@@ -572,18 +594,18 @@
                     <span>Principal Architect</span>
                     <span class="text-violet-300 font-mono text-[10px]">0.25 FTE</span>
                   </div>
-                  <p class="text-[10px] text-slate-400 mt-0.5">Enterprise architecture, Lakehouse security, DoD gates (3 pods = 75% load).</p>
+                  <p class="text-[10px] text-slate-400 mt-0.5">Enterprise architecture, Lakehouse security, DoD gates (70% delivery).</p>
                 </div>
                 <div class="p-2 rounded-lg bg-slate-800/80 border border-slate-700">
                   <div class="flex items-center justify-between font-bold text-slate-200">
                     <span>Delivery Manager</span>
                     <span class="text-amber-300 font-mono text-[10px]">0.33 FTE</span>
                   </div>
-                  <p class="text-[10px] text-slate-400 mt-0.5">Sprint throughput, risk escalation, account governance (3 pods = 100% load).</p>
+                  <p class="text-[10px] text-slate-400 mt-0.5">Sprint throughput, risk escalation, account governance (70% delivery).</p>
                 </div>
               </div>
               <p class="text-[10px] text-slate-400 pt-1 border-t border-slate-800">
-                <strong class="text-slate-300">Optimized Span:</strong> 1 leadership pair oversees up to 3 Scale Pods (17 people per cluster), delivering enterprise velocity.
+                <strong class="text-slate-300">Enterprise Span:</strong> 1 leadership pair oversees up to 3 Scale Pods under the 70/20/10 model, delivering enterprise velocity while pod engineers remain 100% dedicated.
               </p>
             </div>
           </div>
@@ -592,7 +614,7 @@
           <div class="pt-4 border-t border-slate-100 flex items-center justify-between bg-blue-50/60 p-3.5 rounded-xl border border-blue-200">
             <div>
               <span class="text-[10px] font-mono text-blue-900 uppercase font-bold block">Sprint Rate &amp; Base Margin</span>
-              <span class="text-xs text-blue-700 font-medium">Direct Cost: ~$46,708 / sprint • <strong>Base Margin: 55.5%</strong></span>
+              <span class="text-xs text-blue-700 font-medium">Direct Cost: ~$45,153 / sprint • <strong>Base Margin: 57.0%</strong></span>
             </div>
             <div class="text-right">
               <span class="text-xl font-extrabold font-mono text-blue-800">$630,000</span>
@@ -946,21 +968,21 @@
             </div>
             <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
               <span class="text-[11px] font-mono text-slate-500 uppercase font-semibold block">Direct Delivery Cost</span>
-              <span id="fin-cost" class="font-mono text-xl font-black text-slate-900 my-1 block">$2,275,000</span>
-              <span id="fin-cost-detail" class="text-[11px] text-slate-400 font-medium">Squads + cluster leaders</span>
+              <span id="fin-cost" class="font-mono text-xl font-black text-slate-900 my-1 block">$2,141,500</span>
+              <span id="fin-cost-detail" class="text-[11px] text-slate-400 font-medium">Squads + 70% delivery leaders</span>
             </div>
             <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
               <span class="text-[11px] font-mono text-slate-500 uppercase font-semibold block">Gross Profit</span>
-              <span id="fin-profit" class="font-mono text-xl font-black text-emerald-700 my-1 block">$2,513,000</span>
-              <span id="fin-profit-detail" class="text-[11px] text-slate-400 font-medium">Revenue less direct costs</span>
+              <span id="fin-profit" class="font-mono text-xl font-black text-emerald-700 my-1 block">$2,646,500</span>
+              <span id="fin-profit-detail" class="text-[11px] text-slate-400 font-medium">Revenue less direct delivery cost</span>
             </div>
             <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 text-center">
               <span class="text-[11px] font-mono text-slate-500 uppercase font-semibold block">Practice Gross Margin</span>
-              <span id="fin-margin" class="font-mono text-xl font-black text-slate-900 my-1 block">52.5%</span>
-              <span id="fin-margin-status" class="inline-block text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-amber-100 text-amber-700">Below 55% target</span>
+              <span id="fin-margin" class="font-mono text-xl font-black text-slate-900 my-1 block">55.3%</span>
+              <span id="fin-margin-status" class="inline-block text-[10px] font-mono font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">Meets 55% target</span>
             </div>
           </div>
-          <p id="fin-note" class="text-[11px] text-slate-500"></p>
+          <p id="fin-note" class="text-[11px] text-slate-500">Pod-level margin (direct labor + 70% delivery governance) is 57.9%. 20% leadership presales allocated to OpEx (Sales &amp; Marketing).</p>
         </div>
 
         <!-- Bootstrap Phase Margin Caveat Banner (Collapsible) -->
@@ -978,7 +1000,7 @@
             </div>
           </summary>
           <div class="mt-2.5 pt-2.5 border-t border-amber-200/80 pl-7 text-xs text-slate-600 leading-relaxed">
-            At early scale (&lt;3 pods), carrying full-time senior cluster leaders ($260k Principal Architect + $185k Delivery Manager) creates planned leadership drag, temporarily reducing practice gross margin below the 55% target. This planned capital investment is mitigated by maintaining an active sales pipeline and project backlog queue that brings Pods 2, 3, and 4 online quickly to reach peak cluster leverage. Cluster scalability relies on staggered pod intake cadences across a 12-week steady-state horizon.
+            At 1 to 2 pods, carrying whole-person senior leaders ($260k Principal Architect + $185k Delivery Manager) creates planned leadership drag, temporarily compressing practice gross margin below the 55% target. This planned capital investment is mitigated by maintaining an active sales pipeline backlog that drives pod expansion toward full cluster capacity. 20% of senior leadership cost is accounted for under Sales &amp; Marketing (OpEx).
           </div>
         </details>
 
@@ -995,7 +1017,7 @@
 
       </div>
     </section>
-<!-- ==================== SECTION 5: 80/10/10 CAPACITY ENGINE ==================== -->
+<!-- ==================== SECTION 5: 70/20/10 CAPACITY ENGINE ==================== -->
     <section id="sprint-allocation" class="scroll-mt-8 space-y-6">
       <div class="flex items-center gap-2">
         <span class="px-2.5 py-0.5 rounded text-[11px] font-bold font-mono tracking-wider bg-slate-200 text-slate-700 uppercase">Section 05</span>
@@ -1003,10 +1025,10 @@
       </div>
       <div>
         <h2 class="text-2xl font-bold text-slate-900 tracking-tight">
-          Leadership 80/10/10 Model &amp; 100% Dedicated Squad Focus
+          The 70/20/10 Leadership Capacity Engine
         </h2>
         <p class="text-slate-600 text-sm mt-1 max-w-3xl">
-          Pod engineers are 100% dedicated to client backlog execution. The 80/10/10 capacity allocation rule applies strictly to the Leadership Overlay (Principal Architects and Delivery Managers), balancing active delivery oversight with technical shadowing and reusable Brickbuilder asset creation.
+          Balancing active delivery oversight, technical presales growth, and reusable Brickbuilder asset creation across senior practice leadership. Pod engineers remain 100% committed to sprint backlog execution.
         </p>
       </div>
 
@@ -1015,7 +1037,7 @@
         <summary class="flex items-center justify-between cursor-pointer list-none select-none [&::-webkit-details-marker]:hidden">
           <div class="flex items-center gap-2.5">
             <span class="text-purple-600 font-bold text-base">🎯</span>
-            <strong class="text-purple-900 font-semibold text-xs">Dedicated Squad Focus &amp; Leadership Governance Mandate</strong>
+            <strong class="text-purple-900 font-semibold text-xs">Dedicated Squad Focus &amp; Leadership 70/20/10 Mandate</strong>
             <span class="text-[10px] font-mono text-purple-700 bg-purple-100/80 px-2 py-0.5 rounded border border-purple-300/60 hidden sm:inline-block">Capacity Rule</span>
           </div>
           <div class="flex items-center gap-1.5 text-purple-700 font-mono text-[10px] font-semibold flex-shrink-0">
@@ -1024,8 +1046,13 @@
             <svg class="w-4 h-4 text-purple-500 group-open:rotate-180 transition-transform duration-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
           </div>
         </summary>
-        <div class="mt-2.5 pt-2.5 border-t border-purple-200/70 pl-7 text-xs text-slate-600 leading-relaxed">
-          Clients purchase <strong>100% dedicated squad attention</strong>—pod engineers devote all 80 hours per 2-week sprint cycle to contractual backlog execution without splitting time across internal R&amp;D or administrative overhead. The <strong>80/10/10 capacity model governs the Leadership Overlay</strong> (Principal Architects and Delivery Managers), ensuring active gate reviews, engineer upskilling, and systematic IP harvesting.
+        <div class="mt-2.5 pt-2.5 border-t border-purple-200/70 pl-7 text-xs text-slate-600 leading-relaxed space-y-1.5">
+          <p>
+            <strong>Core Pod Delivery Engineers:</strong> 100% dedicated to client sprint backlog execution (80 hours per 2-week cycle). Zero fractional splits, zero presales distraction, and zero administrative drag.
+          </p>
+          <p>
+            <strong>Leadership Overlay Resources (Principal Architects &amp; Delivery Managers):</strong> Governed by the <strong>70/20/10 capacity model</strong> (70% billable delivery oversight, 20% technical presales &amp; co-selling, 10% Brickbuilder IP lab).
+          </p>
         </div>
       </details>
 
@@ -1046,51 +1073,51 @@
           </p>
         </div>
 
-        <!-- Tier 2: Leadership Overlay (80/10/10 Governance) -->
+        <!-- Tier 2: Leadership Overlay (70/20/10 Governance) -->
         <div class="bg-white rounded-2xl border-2 border-purple-400 p-5 shadow-sm space-y-3">
           <div class="flex items-center justify-between">
             <span class="text-xs font-mono font-bold text-purple-800 uppercase">Leadership Overlay (Arch + DM)</span>
-            <span class="px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 font-mono text-[10px] font-bold">80/10/10 Model</span>
+            <span class="px-2 py-0.5 rounded-full bg-purple-100 text-purple-800 font-mono text-[10px] font-bold">70/20/10 Model</span>
           </div>
           <div class="w-full h-8 bg-slate-100 rounded-xl overflow-hidden flex shadow-inner border border-slate-200">
-            <div class="bg-blue-600 text-white font-mono text-[11px] font-bold flex items-center justify-center" style="width: 80%;">
-              80% Delivery (64h)
+            <div class="bg-blue-600 text-white font-mono text-[11px] font-bold flex items-center justify-center" style="width: 70%;">
+              70% Delivery (56h)
             </div>
-            <div class="bg-emerald-500 text-white font-mono text-[11px] font-bold flex items-center justify-center" style="width: 10%;">
-              10% (8h)
+            <div class="bg-amber-500 text-white font-mono text-[11px] font-bold flex items-center justify-center" style="width: 20%;">
+              20% Presales (16h)
             </div>
             <div class="bg-purple-600 text-white font-mono text-[11px] font-bold flex items-center justify-center" style="width: 10%;">
               10% (8h)
             </div>
           </div>
           <p class="text-[11px] text-slate-600 leading-relaxed">
-            Principal Architects and Delivery Managers divide capacity across active pod oversight (64h), hands-on engineer mentoring (8h), and harvesting reusable Brickbuilder IP (8h) across the cluster.
+            Principal Architects and Delivery Managers divide capacity across active delivery governance (56h), technical presales &amp; partner co-selling (16h), and Brickbuilder IP lab (8h).
           </p>
         </div>
 
       </div>
 
-      <!-- 3 Detail Columns for Leadership Overlay 80/10/10 -->
+      <!-- 3 Detail Columns for Leadership Overlay 70/20/10 -->
       <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
         <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-3">
           <div class="flex items-center justify-between">
-            <span class="text-2xl font-black font-mono text-blue-600">80%</span>
-            <span class="text-[10px] font-mono text-slate-400 font-bold">64 Hours / Cycle</span>
+            <span class="text-2xl font-black font-mono text-blue-600">70%</span>
+            <span class="text-[10px] font-mono text-slate-400 font-bold">56 Hours / Cycle</span>
           </div>
           <h4 class="font-bold text-sm text-slate-900">Active Delivery Oversight</h4>
           <p class="text-xs text-slate-600 leading-relaxed">
-            Principal Architects and Delivery Managers conduct Day 1 intake gates, high-risk Spark/streaming PR reviews, presales technical scoping, and bi-weekly staging code freezes across all pods in the cluster.
+            Cross-pod architectural design, high-risk code reviews, DoD release gates, delivery manager sprint cadence, and delivering paid 2-week architectural assessment audits. Direct delivery burden modeled in COGS.
           </p>
         </div>
 
         <div class="bg-white rounded-2xl border border-slate-200 p-6 shadow-sm space-y-3">
           <div class="flex items-center justify-between">
-            <span class="text-2xl font-black font-mono text-emerald-600">10%</span>
-            <span class="text-[10px] font-mono text-slate-400 font-bold">8 Hours / Cycle</span>
+            <span class="text-2xl font-black font-mono text-amber-600">20%</span>
+            <span class="text-[10px] font-mono text-slate-400 font-bold">16 Hours / Cycle</span>
           </div>
-          <h4 class="font-bold text-sm text-slate-900">Technical Shadowing &amp; Mentoring</h4>
+          <h4 class="font-bold text-sm text-slate-900">Technical Presales &amp; Channel Growth</h4>
           <p class="text-xs text-slate-600 leading-relaxed">
-            Senior architects pair directly with pod engineers on advanced patterns (Spark Structured Streaming, Delta Liquid clustering, Unity Catalog metastore isolation, and dbt semantic modeling) without billing client hours.
+            Statement of Work (SOW) scoping, story point estimation, Databricks co-sell partner meetings, PAM alignment, and prospective client technical discovery. Accounted for under Sales &amp; Marketing (OpEx).
           </p>
         </div>
 
@@ -1099,9 +1126,9 @@
             <span class="text-2xl font-black font-mono text-purple-600">10%</span>
             <span class="text-[10px] font-mono text-slate-400 font-bold">8 Hours / Cycle</span>
           </div>
-          <h4 class="font-bold text-sm text-slate-900">Practice Lab &amp; Reusable IP</h4>
+          <h4 class="font-bold text-sm text-slate-900">Practice Lab &amp; Brickbuilder IP</h4>
           <p class="text-xs text-slate-600 leading-relaxed">
-            Reserved leadership bandwidth to extract and standardize generic Databricks Asset Bundles (DABs), automated CI/CD pipelines, dbt test suites, and Terraform lakehouse modules that compound practice margins.
+            Harvesting generic Databricks Asset Bundles (DABs), dbt semantic models, and automated Terraform lakehouse templates to maintain official Brickbuilder partner accreditation and accelerate client onboarding.
           </p>
         </div>
       </div>
@@ -1455,7 +1482,10 @@
             </div>
 
             <div class="flex items-center justify-between pb-2 border-b border-slate-100">
-              <span class="font-semibold text-slate-700">Principal Data Architect</span>
+              <div>
+                <span class="font-semibold text-slate-700 block">Principal Data Architect</span>
+                <span class="text-[10px] text-slate-400 font-mono">70% Delivery COGS: $182,000 • 20% Presales OpEx</span>
+              </div>
               <div class="flex items-center gap-1 font-mono font-bold">
                 <span>$</span>
                 <input type="number" id="cost-arch" value="260000" step="5000" class="w-28 text-right px-2 py-1 border border-slate-200 rounded-lg text-xs font-mono">
@@ -1463,7 +1493,10 @@
             </div>
 
             <div class="flex items-center justify-between pb-2 border-b border-slate-100">
-              <span class="font-semibold text-slate-700">Data Delivery Manager</span>
+              <div>
+                <span class="font-semibold text-slate-700 block">Data Delivery Manager</span>
+                <span class="text-[10px] text-slate-400 font-mono">70% Delivery COGS: $129,500 • 20% Presales OpEx</span>
+              </div>
               <div class="flex items-center gap-1 font-mono font-bold">
                 <span>$</span>
                 <input type="number" id="cost-dm" value="185000" step="5000" class="w-28 text-right px-2 py-1 border border-slate-200 rounded-lg text-xs font-mono">
@@ -1488,7 +1521,7 @@
                 ⚙️
               </div>
               <div>
-                <h3 class="text-base font-bold text-slate-900">Balanced Cluster Sizing &amp; IP Accelerator Parameters</h3>
+                <h3 class="text-base font-bold text-slate-900">Balanced Cluster Sizing &amp; 70/20/10 Parameters</h3>
                 <p class="text-xs text-slate-500">Calibrated leadership overlays and Brickbuilder efficiency gains powering margin expansion</p>
               </div>
             </div>
@@ -1497,21 +1530,26 @@
             </span>
           </div>
 
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-4 text-xs">
+          <div class="grid grid-cols-1 md:grid-cols-4 gap-4 text-xs">
             <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
               <span class="font-mono text-[10px] uppercase font-bold text-slate-500 block">Core Cluster Span</span>
-              <span class="font-bold text-slate-900 text-sm block">4 Pods / Leadership Pair</span>
-              <p class="text-slate-500 text-[11px]">1 Principal Architect + 1 Delivery Manager oversee 4 Core Pods (0.20 each = 80% active load; 14 people cluster).</p>
+              <span class="font-bold text-slate-900 text-sm block">4 Pods / Pair</span>
+              <p class="text-slate-500 text-[11px]">1 Architect + 1 DM oversee 4 Core Pods (0.20 each = 80% span; 70% delivery).</p>
             </div>
             <div class="p-3.5 rounded-xl bg-slate-50 border border-slate-200 space-y-1">
               <span class="font-mono text-[10px] uppercase font-bold text-slate-500 block">Scale Cluster Span</span>
-              <span class="font-bold text-slate-900 text-sm block">3 Pods / Leadership Pair</span>
-              <p class="text-slate-500 text-[11px]">1 Principal Architect (0.25 each = 75% load) + 1 Delivery Manager (0.33 each = 100% load; 17 people cluster).</p>
+              <span class="font-bold text-slate-900 text-sm block">3 Pods / Pair</span>
+              <p class="text-slate-500 text-[11px]">1 Architect (0.25) + 1 DM (0.33) oversee 3 Scale Pods (70% delivery).</p>
+            </div>
+            <div class="p-3.5 rounded-xl bg-blue-50/80 border border-blue-200 space-y-1">
+              <span class="font-mono text-[10px] uppercase font-bold text-blue-700 block">Leadership P&amp;L Split</span>
+              <span class="font-bold text-blue-900 text-sm block">70 / 20 / 10 Model</span>
+              <p class="text-blue-700 text-[11px]">70% Direct Delivery (COGS), 20% Presales (OpEx), 10% IP Lab R&amp;D.</p>
             </div>
             <div class="p-3.5 rounded-xl bg-purple-50/80 border border-purple-200 space-y-1">
               <span class="font-mono text-[10px] uppercase font-bold text-purple-700 block">IP Accelerator Gain</span>
-              <span class="font-bold text-purple-900 text-sm block">35% Delivery Effort Reduction</span>
-              <p class="text-purple-700 text-[11px]">Internal Brickbuilder DABs, dbt macros, and Terraform lakehouse modules expand gross margins up to 68%+.</p>
+              <span class="font-bold text-purple-900 text-sm block">35% Effort Drop</span>
+              <p class="text-purple-700 text-[11px]">Brickbuilder DABs &amp; dbt modules expand margins from 57% to 65%–70%.</p>
             </div>
           </div>
         </div>
@@ -1525,14 +1563,14 @@
         <div class="p-5 rounded-2xl bg-emerald-50 border-2 border-emerald-300 space-y-3">
           <div class="flex items-center justify-between">
             <span class="font-mono text-xs font-bold uppercase text-emerald-800">Core Pod Financial Model (3 FTEs)</span>
-            <span id="recon-core-margin-badge" class="px-2 py-0.5 rounded bg-emerald-200 text-emerald-900 font-mono text-[10px] font-bold">Base Margin: 56.2%</span>
+            <span id="recon-core-margin-badge" class="px-2 py-0.5 rounded bg-emerald-200 text-emerald-900 font-mono text-[10px] font-bold">Base Margin: 57.9%</span>
           </div>
           <div class="space-y-1 text-xs text-slate-700 leading-relaxed">
             <p><strong>Direct Labor:</strong> <span id="recon-core-labor">$235k (Lead) + $200k (Sr) + $175k (AE) = $610,000 / yr</span>.</p>
-            <p><strong>Governance Overlay (4:1 Span):</strong> <span id="recon-core-overlay">0.20 Arch ($52k) + 0.20 DM ($37k) = $89,000 / yr</span>.</p>
-            <p><strong>Total Direct Cost:</strong> <span id="recon-core-total">$699,000 / yr &rarr; $29,125 / sprint</span>.</p>
-            <p id="recon-core-profit" class="pt-1 text-emerald-900 font-bold">Selling at $66,500 / sprint yields 56.2% base margin ($37,375 gross profit / sprint).</p>
-            <p id="recon-core-ip" class="text-purple-800 font-semibold pt-0.5">With IP Accelerators: Effort reduces by 35% &rarr; Realized Margin expands to 63.9%+.</p>
+            <p><strong>Governance Overlay (70% Delivery Share):</strong> <span id="recon-core-overlay">0.20 Arch ($36.4k) + 0.20 DM ($25.9k) = $62,300 / yr</span>.</p>
+            <p><strong>Total Direct Cost:</strong> <span id="recon-core-total">$672,300 / yr &rarr; $28,013 / sprint</span>.</p>
+            <p id="recon-core-profit" class="pt-1 text-emerald-900 font-bold">Selling at $66,500 / sprint yields 57.9% base margin ($38,487 gross profit / sprint).</p>
+            <p id="recon-core-ip" class="text-purple-800 font-semibold pt-0.5">With IP Accelerators: Effort reduces by 35% &rarr; Realized Margin expands to 66.6%+.</p>
           </div>
         </div>
 
@@ -1540,14 +1578,14 @@
         <div class="p-5 rounded-2xl bg-blue-50 border-2 border-blue-300 space-y-3">
           <div class="flex items-center justify-between">
             <span class="font-mono text-xs font-bold uppercase text-blue-800">Scale Pod Financial Model (5 FTEs)</span>
-            <span id="recon-scale-margin-badge" class="px-2 py-0.5 rounded bg-blue-200 text-blue-900 font-mono text-[10px] font-bold">Base Margin: 55.5%</span>
+            <span id="recon-scale-margin-badge" class="px-2 py-0.5 rounded bg-blue-200 text-blue-900 font-mono text-[10px] font-bold">Base Margin: 57.0%</span>
           </div>
           <div class="space-y-1 text-xs text-slate-700 leading-relaxed">
             <p><strong>Direct Labor:</strong> <span id="recon-scale-labor">$235k + (2 &times; $200k) + $175k + $185k = $995,000 / yr</span>.</p>
-            <p><strong>Governance Overlay (3:1 Span):</strong> <span id="recon-scale-overlay">0.25 Arch ($65k) + 0.33 DM ($61.7k) = $126.7k / yr</span>.</p>
-            <p><strong>Total Direct Cost:</strong> <span id="recon-scale-total">$1,121,667 / yr &rarr; $46,736 / sprint</span>.</p>
-            <p id="recon-scale-profit" class="pt-1 text-blue-900 font-bold">Selling at $105,000 / sprint yields 55.5% base margin ($58,264 gross profit / sprint).</p>
-            <p id="recon-scale-ip" class="text-purple-800 font-semibold pt-0.5">With IP Accelerators: Effort reduces by 35% &rarr; Realized Margin expands to 63.3%+.</p>
+            <p><strong>Governance Overlay (70% Delivery Share):</strong> <span id="recon-scale-overlay">0.25 Arch ($45.5k) + 0.33 DM ($43.2k) = $88,667 / yr</span>.</p>
+            <p><strong>Total Direct Cost:</strong> <span id="recon-scale-total">$1,083,667 / yr &rarr; $45,153 / sprint</span>.</p>
+            <p id="recon-scale-profit" class="pt-1 text-blue-900 font-bold">Selling at $105,000 / sprint yields 57.0% base margin ($59,847 gross profit / sprint).</p>
+            <p id="recon-scale-ip" class="text-purple-800 font-semibold pt-0.5">With IP Accelerators: Effort reduces by 35% &rarr; Realized Margin expands to 66.0%+.</p>
           </div>
         </div>
 
@@ -1568,7 +1606,7 @@
           </div>
         </summary>
         <div class="mt-3 pt-3 border-t border-amber-200/80 pl-8 text-xs text-slate-600 leading-relaxed">
-          At early scale (&lt;3 pods), carrying full-time senior cluster leaders ($260k Principal Architect + $185k Delivery Manager) creates planned leadership drag, temporarily dipping practice gross margin below the 55% target. This early margin compression is an acknowledged strategic capital investment. It is mitigated by maintaining an active sales pipeline and project backlog queue that brings Pods 2, 3, and 4 online quickly to reach optimal 80% cluster leadership utilization.
+          At early scale (&lt;3 pods), carrying whole-person senior leaders ($260k Principal Architect + $185k Delivery Manager) creates planned leadership drag, temporarily dipping practice gross margin below the 55% target. This planned capital investment is mitigated by maintaining an active sales pipeline and project backlog queue that brings Pods 2, 3, and 4 online quickly to reach optimal cluster leadership utilization. 20% of senior leadership cost is allocated to Sales &amp; Marketing (OpEx).
         </div>
       </details>
 
@@ -1725,13 +1763,16 @@
         squadDirectCost = planningConfig.costLeadEng + (planningConfig.costSrEng * 2) + planningConfig.costAnalyticsEng + planningConfig.costPlatformEng;
       }
 
-      // Leadership cost per pod share
-      const governanceCost = (planningConfig.costArch * archAlloc) + (planningConfig.costDm * dmAlloc);
+      // 70% delivery share of leadership compensation (20% OpEx presales excluded from direct COGS)
+      const costArchDelivery = planningConfig.costArch * 0.70;
+      const costDmDelivery = planningConfig.costDm * 0.70;
+      const governanceCost = (costArchDelivery * archAlloc) + (costDmDelivery * dmAlloc);
       let totalAnnualCost = squadDirectCost + governanceCost;
 
-      // Apply IP leverage efficiency if active (reduces effort required per outcome)
+      // Apply IP leverage efficiency if active (reduces delivery effort by 35% on squad engineering)
       if (ipAccelerated) {
-        totalAnnualCost = totalAnnualCost * (1 - (planningConfig.ipEffGain * 0.5)); 
+        const reducedSquadCost = squadDirectCost * (1 - (planningConfig.ipEffGain * 0.8));
+        totalAnnualCost = reducedSquadCost + governanceCost;
       }
 
       const sprintDirectCost = totalAnnualCost / 24;
@@ -1770,13 +1811,15 @@
       const totalDmFTE = pods * fin.dmAlloc;
       const dmLoad = Math.min(100, Math.round((totalDmFTE / clustersNeeded) * 100));
 
-      // Practice Financials
+      // Practice Financials - Direct Delivery Cost (COGS) models 70% leadership delivery burden
       const annualRevenue = pods * fin.sprintPrice * 24;
       let squadCost = pods * fin.squadDirectCost;
-      let leaderCost = clustersNeeded * (planningConfig.costArch + planningConfig.costDm) + (opsHeads * planningConfig.costOpsLead);
+      const costArchDelivery = planningConfig.costArch * 0.70;
+      const costDmDelivery = planningConfig.costDm * 0.70;
+      let leaderCost = clustersNeeded * (costArchDelivery + costDmDelivery) + (opsHeads * planningConfig.costOpsLead);
       
       if (planningConfig.ipLeverageActive) {
-        squadCost = squadCost * (1 - (planningConfig.ipEffGain * 0.4));
+        squadCost = squadCost * (1 - (planningConfig.ipEffGain * 0.8));
       }
       
       const practiceCost = squadCost + leaderCost;
@@ -1811,7 +1854,7 @@
       }
 
       const podMargin = fin.actualMargin.toFixed(1);
-      setT('fin-note', `Pod-level margin (direct labor + governance share) is ${podMargin}%. Practice-level includes whole-person leadership clusters.`);
+      setT('fin-note', `Pod-level margin (direct labor + 70% delivery governance) is ${podMargin}%. 20% leadership presales allocated to OpEx (Sales & Marketing).`);
 
       // Dynamic Insight Box
       const titleEl = document.getElementById('insight-title');
@@ -1993,10 +2036,13 @@
       const rCoreProfit = document.getElementById('recon-core-profit');
       const rCoreIPEl = document.getElementById('recon-core-ip');
 
+      const archDeliv = planningConfig.costArch * 0.70;
+      const dmDeliv = planningConfig.costDm * 0.70;
+
       if (rCoreBadge) rCoreBadge.textContent = `Base Margin: ${coreBase.actualMargin.toFixed(1)}%`;
       if (rCoreLabor) rCoreLabor.textContent = `$${(planningConfig.costLeadEng/1000).toFixed(0)}k (Lead) + $${(planningConfig.costSrEng/1000).toFixed(0)}k (Sr) + $${(planningConfig.costAnalyticsEng/1000).toFixed(0)}k (AE) = $${coreBase.squadDirectCost.toLocaleString()} / yr`;
-      if (rCoreOverlay) rCoreOverlay.textContent = `0.20 Arch ($${(planningConfig.costArch*0.2/1000).toFixed(0)}k) + 0.20 DM ($${(planningConfig.costDm*0.2/1000).toFixed(0)}k) = $${coreBase.governanceCost.toLocaleString()} / yr`;
-      if (rCoreTotal) rCoreTotal.textContent = `$${coreBase.totalAnnualCost.toLocaleString()} / yr → $${Math.round(coreBase.sprintDirectCost).toLocaleString()} / sprint`;
+      if (rCoreOverlay) rCoreOverlay.textContent = `0.20 Arch ($${(archDeliv*0.2/1000).toFixed(1)}k) + 0.20 DM ($${(dmDeliv*0.2/1000).toFixed(1)}k) = $${Math.round(coreBase.governanceCost).toLocaleString()} / yr (70% COGS)`;
+      if (rCoreTotal) rCoreTotal.textContent = `$${Math.round(coreBase.totalAnnualCost).toLocaleString()} / yr → $${Math.round(coreBase.sprintDirectCost).toLocaleString()} / sprint`;
       if (rCoreProfit) {
         const profit = Math.round(coreBase.sprintPrice - coreBase.sprintDirectCost);
         rCoreProfit.textContent = `Selling at $${coreBase.sprintPrice.toLocaleString()} / sprint yields ${coreBase.actualMargin.toFixed(1)}% base margin ($${profit.toLocaleString()} gross profit / sprint).`;
@@ -2014,7 +2060,7 @@
 
       if (rScaleBadge) rScaleBadge.textContent = `Base Margin: ${scaleBase.actualMargin.toFixed(1)}%`;
       if (rScaleLabor) rScaleLabor.textContent = `$${(planningConfig.costLeadEng/1000).toFixed(0)}k + (2 × $${(planningConfig.costSrEng/1000).toFixed(0)}k) + $${(planningConfig.costAnalyticsEng/1000).toFixed(0)}k + $${(planningConfig.costPlatformEng/1000).toFixed(0)}k = $${scaleBase.squadDirectCost.toLocaleString()} / yr`;
-      if (rScaleOverlay) rScaleOverlay.textContent = `0.25 Arch ($${(planningConfig.costArch*0.25/1000).toFixed(0)}k) + 0.33 DM ($${(planningConfig.costDm/3000).toFixed(1)}k) = $${Math.round(scaleBase.governanceCost).toLocaleString()} / yr`;
+      if (rScaleOverlay) rScaleOverlay.textContent = `0.25 Arch ($${(archDeliv*0.25/1000).toFixed(1)}k) + 0.33 DM ($${(dmDeliv/3000).toFixed(1)}k) = $${Math.round(scaleBase.governanceCost).toLocaleString()} / yr (70% COGS)`;
       if (rScaleTotal) rScaleTotal.textContent = `$${Math.round(scaleBase.totalAnnualCost).toLocaleString()} / yr → $${Math.round(scaleBase.sprintDirectCost).toLocaleString()} / sprint`;
       if (rScaleProfit) {
         const sProfit = Math.round(scaleBase.sprintPrice - scaleBase.sprintDirectCost);
